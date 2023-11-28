@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QGraphicsRectItem>
+#include "model.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -12,10 +14,15 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(Model& model, QWidget *parent = nullptr);
     ~MainWindow();
+    QGraphicsRectItem* rect = new QGraphicsRectItem(250,500,100,100);
+
+public slots:
+    void updateRectPos(int, int, int);
 
 private:
     Ui::MainWindow *ui;
+
 };
 #endif // MAINWINDOW_H
