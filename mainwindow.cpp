@@ -19,6 +19,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     connect(&model, &Model::sendNewRecPos, this, &MainWindow::updateRectPos);
 
+    // Screen switching connections
     connect(ui->buttonNext, &QPushButton::clicked, &model, &Model::incrementScreen);
     connect(ui->buttonPrevious, &QPushButton::clicked, &model, &Model::decrementScreen);
     connect(&model, &Model::setScreenToSwitch, ui->gameScreens, &QStackedWidget::setCurrentIndex);
