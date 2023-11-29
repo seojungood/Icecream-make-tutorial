@@ -18,6 +18,7 @@ public:
     ~MainWindow();
     QGraphicsRectItem* rect = new QGraphicsRectItem(250,500,100,100);
 
+
 public slots:
     void updateRectPos(int, int, int);
 

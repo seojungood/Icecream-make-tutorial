@@ -25,6 +25,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateRectPos(int x, int y, int angle){
     rect->setPos(x,y);
-    //rect->moveBy(x,y);
+    //rect->setRotation(-(angle * 360.0) / (2 * 3.14159265));
+    rect->setBrush(QBrush(Qt::black));
 }
 

@@ -22,6 +22,7 @@ Model::Model(QObject *parent)
     // Add the ground fixture to the ground body.
     groundBody->CreateFixture(&groundBox, 0.0f);
 
+
     // Define the dynamic body. We set its position and call the body factory.
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
@@ -47,6 +48,7 @@ Model::Model(QObject *parent)
 
     // Add the shape to the body.
     body->CreateFixture(&fixtureDef);
+
 
     timer = new QTimer(this);
     //connect(timer, &MainWindow::newHeightValue, this, &MainWindow::updateWorldSlot);
