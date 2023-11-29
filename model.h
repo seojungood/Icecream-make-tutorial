@@ -17,6 +17,8 @@ public:
     b2Body* body;
     QTimer *timer;
 
+    int screenIndex {0};
+
     //vector<b2Body*> bodies;
     //int numberBoxes = {2};
 
@@ -29,9 +31,12 @@ public:
 
 signals:
     void sendNewRecPos(int,int,int);
+    void setScreenToSwitch(int);
 
 public slots:
     void updateWorldSlot();
+    void incrementScreen();
+    void decrementScreen();
 };
 
 #endif // MODEL_H

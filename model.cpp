@@ -54,9 +54,10 @@ Model::Model(QObject *parent)
     //connect(timer, &MainWindow::newHeightValue, this, &MainWindow::updateWorldSlot);
     connect(timer, &QTimer::timeout, this, &Model::updateWorldSlot);
     timer->start(1000/60);
-
-    //connect(this, &MainWindow::newHeightValue, this, &MainWindow::on_verticalSlider_valueChanged)
 }
+
+
+//connect(this, &MainWindow::newHeightValue, this, &MainWindow::on_verticalSlider_valueChanged)
 
 void Model::updateWorldSlot(){
     // Instruct the world to perform a single step of simulation.
@@ -71,4 +72,22 @@ void Model::updateWorldSlot(){
     printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
 
     emit sendNewRecPos(position.x*100, -position.y*100, angle*100);
+}
+
+void Model::incrementScreen()
+{
+    screenIndex++;
+    if (screenIndex > 5) {
+        screenIndex = 0;
+    }
+    emit setScreenToSwitch(screenIndex);
+}
+
+void Model::decrementScreen()
+{
+    screenIndex--;
+    if (screenIndex < 0) {
+        screenIndex = 5;
+    }
+    emit setScreenToSwitch(screenIndex);
 }
