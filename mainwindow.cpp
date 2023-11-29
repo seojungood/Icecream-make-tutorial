@@ -35,15 +35,3 @@ void MainWindow::updateRectPos(int x, int y, int angle){
     rect->setBrush(QBrush(Qt::black));
 }
 
-
-void MainWindow::on_buttonPrevious_clicked()
-{
-
-}
-
-
-void MainWindow::on_buttonNext_clicked()
-{
-
-}
-

@@ -23,8 +23,6 @@ public slots:
     void updateRectPos(int, int, int);
 
 private slots:
-    void on_buttonPrevious_clicked();
-    void on_buttonNext_clicked();
 
 private:
     Ui::MainWindow *ui;
