@@ -4,8 +4,7 @@
 #include <QObject>
 #include <QMainWindow>
 #include <Box2D/Box2D.h>
-#include <vector>
-using namespace std;
+#include <QVector>
 
 class Model : public QObject
 {
@@ -17,10 +16,8 @@ public:
     b2Body* body;
     QTimer *timer;
 
+    int numberBodies = {20};
     int screenIndex {0};
-
-    //vector<b2Body*> bodies;
-    //int numberBoxes = {2};
 
     // Prepare for simulation. Typically we use a time step of 1/60 of a
     // second (60Hz) and 10 iterations. This provides a high quality simulation
@@ -30,7 +27,7 @@ public:
     int32 positionIterations = 2;
 
 signals:
-    void sendNewRecPos(int,int,int);
+    void sendBodies(b2Body*);
     void setScreenToSwitch(int);
 
 public slots:

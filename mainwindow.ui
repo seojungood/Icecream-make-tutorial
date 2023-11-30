@@ -19,7 +19,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>801</width>
+      <width>800</width>
       <height>600</height>
      </rect>
     </property>
@@ -42,19 +42,27 @@
      </widget>
     </widget>
     <widget class="QWidget" name="screen01Add">
-     <widget class="QLabel" name="labelAddIngredients">
+     <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
+<<<<<<< HEAD
         <x>10</x>
         <y>10</y>
         <width>150</width>
         <height>50</height>
+=======
+        <x>140</x>
+        <y>125</y>
+        <width>141</width>
+        <height>41</height>
+>>>>>>> 64c1743b6b8c146c417dd9495ad985aac4d95da7
        </rect>
       </property>
       <property name="text">
        <string>1. Add Ingredients!</string>
       </property>
      </widget>
+<<<<<<< HEAD
      <widget class="QPushButton" name="buttonCream">
       <property name="geometry">
        <rect>
@@ -175,6 +183,8 @@
      <zorder>labelBackPot</zorder>
      <zorder>label_2</zorder>
      <zorder>labelFrontPot</zorder>
+=======
+>>>>>>> 64c1743b6b8c146c417dd9495ad985aac4d95da7
     </widget>
     <widget class="QWidget" name="screen02Boil">
      <widget class="QLabel" name="label_3">
@@ -225,8 +235,8 @@
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>125</y>
+        <x>260</x>
+        <y>50</y>
         <width>101</width>
         <height>71</height>
        </rect>
@@ -238,10 +248,10 @@
      <widget class="QGraphicsView" name="graphicsView">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>20</y>
-        <width>500</width>
-        <height>500</height>
+        <x>0</x>
+        <y>0</y>
+        <width>800</width>
+        <height>600</height>
        </rect>
       </property>
      </widget>
@@ -249,35 +259,6 @@
      <zorder>label_6</zorder>
     </widget>
    </widget>
-   <widget class="QPushButton" name="buttonPrevious">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>0</y>
-      <width>100</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Previous</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="buttonNext">
-    <property name="geometry">
-     <rect>
-      <x>700</x>
-      <y>15</y>
-      <width>100</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Next</string>
-    </property>
-   </widget>
-   <zorder>gameScreens</zorder>
-   <zorder>buttonNext</zorder>
-   <zorder>buttonPrevious</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
