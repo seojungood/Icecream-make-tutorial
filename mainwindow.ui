@@ -19,7 +19,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>600</width>
+      <width>800</width>
       <height>600</height>
      </rect>
     </property>
@@ -105,8 +105,8 @@
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>125</y>
+        <x>260</x>
+        <y>50</y>
         <width>101</width>
         <height>71</height>
        </rect>
@@ -118,10 +118,10 @@
      <widget class="QGraphicsView" name="graphicsView">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>20</y>
-        <width>500</width>
-        <height>500</height>
+        <x>0</x>
+        <y>0</y>
+        <width>800</width>
+        <height>600</height>
        </rect>
       </property>
      </widget>
