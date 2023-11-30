@@ -1,5 +1,6 @@
 #include "model.h"
 #include <QTimer>
+#include <QDebug>
 
 Model::Model(QObject *parent)
     : QObject{parent}, world(b2Vec2(0.0f, -10.0f))
@@ -83,6 +84,7 @@ void Model::incrementScreen()
     if (screenIndex > 5) {
         screenIndex = 0;
     }
+    qDebug() << "INCREMENT";
     emit setScreenToSwitch(screenIndex);
 }
 
@@ -92,5 +94,6 @@ void Model::decrementScreen()
     if (screenIndex < 0) {
         screenIndex = 5;
     }
+    qDebug() << "DECREMENT";
     emit setScreenToSwitch(screenIndex);
 }

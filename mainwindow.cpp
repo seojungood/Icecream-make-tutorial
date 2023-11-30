@@ -28,6 +28,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     // Screen switching connections
     connect(ui->buttonNext, &QPushButton::clicked, &model, &Model::incrementScreen);
     connect(ui->buttonPrevious, &QPushButton::clicked, &model, &Model::decrementScreen);
+    connect(&model, &Model::setScreenToSwitch, ui->gameScreens, &QStackedWidget::setCurrentIndex);
 
     initializeImages();
 }
@@ -72,7 +73,7 @@ void MainWindow::updateRects(b2Body* bodies){
         // Update cooresponding graphic boxes
 
         QBrush q;
-        q.setTextureImage(QImage("C:Users\andre\Downloads\pixel-strawberry.jpg").scaled(100,100));
+        //q.setTextureImage(QImage("C:Users\andre\Downloads\pixel-strawberry.jpg").scaled(100,100));
 
         graphicsRects[i]->setPos(300+position.x*40, 600+(-position.y*60)); //Offset and scale to transform from world to Graphics view
         graphicsRects[i]->setBrush(QBrush(Qt::white));
