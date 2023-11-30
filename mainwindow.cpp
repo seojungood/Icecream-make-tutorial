@@ -23,6 +23,8 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(ui->buttonNext, &QPushButton::clicked, &model, &Model::incrementScreen);
     connect(ui->buttonPrevious, &QPushButton::clicked, &model, &Model::decrementScreen);
     connect(&model, &Model::setScreenToSwitch, ui->gameScreens, &QStackedWidget::setCurrentIndex);
+
+    initializeImages();
 }
 
 MainWindow::~MainWindow()
@@ -35,4 +37,10 @@ void MainWindow::updateRectPos(int x, int y, int angle){
     //rect->setRotation(-(angle * 360.0) / (2 * 3.14159265));
     rect->setBrush(QBrush(Qt::black));
 }
+
+void MainWindow::initializeImages()
+{
+    ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
+}
+
 

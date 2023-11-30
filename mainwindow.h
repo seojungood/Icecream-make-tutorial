@@ -26,6 +26,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    void initializeImages();
 
 };
 #endif // MAINWINDOW_H
