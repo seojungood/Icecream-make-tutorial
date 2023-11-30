@@ -25,9 +25,10 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     }
 
     connect(&model, &Model::sendBodies, this, &MainWindow::updateRects);
+
     // Screen switching connections
-    connect(ui->buttonNext, &QPushButton::clicked, &model, &Model::incrementScreen);
-    connect(ui->buttonPrevious, &QPushButton::clicked, &model, &Model::decrementScreen);
+    //connect(ui->buttonNext, &QPushButton::clicked, &model, &Model::incrementScreen);
+    //connect(ui->buttonPrevious, &QPushButton::clicked, &model, &Model::decrementScreen);
 
     initializeImages();
 }
@@ -56,8 +57,8 @@ void MainWindow::updateRectPos(int x, int y, int angle){
 void MainWindow::updateRects(b2Body* bodies){
     int i = 0;
 
-    //qDebug()<<"looping";
-    while(bodies){
+    while(bodies)
+    {
         // Currenct body is the world ground
         if(bodies->GetType() == b2_staticBody){
             bodies = bodies->GetNext();
@@ -70,7 +71,6 @@ void MainWindow::updateRects(b2Body* bodies){
         float32 angle = bodies->GetAngle();
 
         // Update cooresponding graphic boxes
-
         QBrush q;
         q.setTextureImage(QImage("C:Users\andre\Downloads\pixel-strawberry.jpg").scaled(100,100));
 
@@ -94,7 +94,7 @@ void MainWindow::updateRects(b2Body* bodies){
 
 void MainWindow::initializeImages()
 {
-    ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
+    //ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
 }
 
 
