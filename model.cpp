@@ -76,3 +76,21 @@ void Model::updateWorldSlot(){
     emit sendBodies(world.GetBodyList());
     //emit sendNewRecPos(position.x*100, -position.y*100, angle*100);
 }
+
+void Model::incrementScreen()
+{
+    screenIndex++;
+    if (screenIndex > 5) {
+        screenIndex = 0;
+    }
+    emit setScreenToSwitch(screenIndex);
+}
+
+void Model::decrementScreen()
+{
+    screenIndex--;
+    if (screenIndex < 0) {
+        screenIndex = 5;
+    }
+    emit setScreenToSwitch(screenIndex);
+}

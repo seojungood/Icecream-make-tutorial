@@ -27,8 +27,11 @@ public slots:
     void updateRectPos(int, int, int);
     void updateRects(b2Body*);
 
+private slots:
+
 private:
     Ui::MainWindow *ui;
+    void initializeImages();
 
 };
 #endif // MAINWINDOW_H

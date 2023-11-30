@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QGraphicsRectItem>
 #include <QDebug>
+#include <QPushButton>
+#include <QStackedWidget>
 #include "model.h"
 
 MainWindow::MainWindow(Model& model, QWidget *parent)
@@ -23,6 +25,11 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     }
 
     connect(&model, &Model::sendBodies, this, &MainWindow::updateRects);
+    // Screen switching connections
+    connect(ui->buttonNext, &QPushButton::clicked, &model, &Model::incrementScreen);
+    connect(ui->buttonPrevious, &QPushButton::clicked, &model, &Model::decrementScreen);
+
+    initializeImages();
 }
 
 MainWindow::~MainWindow()
@@ -84,4 +91,10 @@ void MainWindow::updateRects(b2Body* bodies){
         ++i;
     }
 }
+
+void MainWindow::initializeImages()
+{
+    ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
+}
+
 

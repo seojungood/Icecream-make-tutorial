@@ -16,8 +16,8 @@ public:
     b2Body* body;
     QTimer *timer;
 
-    //Qvector<b2Body*> bodies;
     int numberBodies = {20};
+    int screenIndex {0};
 
     // Prepare for simulation. Typically we use a time step of 1/60 of a
     // second (60Hz) and 10 iterations. This provides a high quality simulation
@@ -27,11 +27,13 @@ public:
     int32 positionIterations = 2;
 
 signals:
-    void sendNewRecPos(int,int,int);
     void sendBodies(b2Body*);
+    void setScreenToSwitch(int);
 
 public slots:
     void updateWorldSlot();
+    void incrementScreen();
+    void decrementScreen();
 };
 
 #endif // MODEL_H
