@@ -12,14 +12,19 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 {
     ui->setupUi(this);
 
+    this->model = &model;
+
     // Set the background
     QGraphicsScene* scene = new QGraphicsScene(0,0,800,600, ui->graphicsView);
-    scene->setBackgroundBrush(Qt::black);
+    scene->setBackgroundBrush(Qt::white);
     ui->graphicsView->setScene(scene);
 
+    // Create the rectangles in graphics view
     for(int i = 0; i < model.numberBodies; ++i)
     {
         QGraphicsRectItem* rect = new QGraphicsRectItem(0,0,100,100);
+        rect->setFlag(QGraphicsItem::ItemIsMovable, true);
+        rect->setPen(Qt::NoPen);
         graphicsRects.push_back(rect);
         scene->addItem(rect);
     }
@@ -27,8 +32,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(&model, &Model::sendBodies, this, &MainWindow::updateRects);
 
     // Screen switching connections
-    //connect(ui->buttonNext, &QPushButton::clicked, &model, &Model::incrementScreen);
-    //connect(ui->buttonPrevious, &QPushButton::clicked, &model, &Model::decrementScreen);
+    connect(ui->buttonNext, &QPushButton::clicked, &model, &Model::incrementScreen);
+    connect(ui->buttonPrevious, &QPushButton::clicked, &model, &Model::decrementScreen);
+    connect(&model, &Model::setScreenToSwitch, ui->gameScreens, &QStackedWidget::setCurrentIndex);
 
     initializeImages();
 }
@@ -38,45 +44,23 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::drawGround(){
-    // Draw Ground
-    graphicsRects[0]->setPos(0, 0);
-    graphicsRects[0]->setBrush(QBrush(Qt::white));
-}
-
-void MainWindow::drawBoxes(){
-
-}
-
-void MainWindow::updateRectPos(int x, int y, int angle){
-    rect->setPos(x,y);
-    //rect->setRotation(-(angle * 360.0) / (2 * 3.14159265));
-    rect->setBrush(QBrush(Qt::black));
-}
-
 void MainWindow::updateRects(b2Body* bodies){
     int i = 0;
-
     while(bodies)
     {
-        // Currenct body is the world ground
+        // Currenct body is the world ground, do not draw it.
         if(bodies->GetType() == b2_staticBody){
             bodies = bodies->GetNext();
             ++i;
             continue;
         }
 
-        // Position and angle of the body.
+        // Position and angle of the body in the world.
         b2Vec2 position = bodies->GetPosition();
         float32 angle = bodies->GetAngle();
 
-        // Update cooresponding graphic boxes
-        QBrush q;
-        q.setTextureImage(QImage("C:Users\andre\Downloads\pixel-strawberry.jpg").scaled(100,100));
-
-        graphicsRects[i]->setPos(300+position.x*40, 600+(-position.y*60)); //Offset and scale to transform from world to Graphics view
-        graphicsRects[i]->setBrush(QBrush(Qt::white));
-        //graphicsRects[i]->setBrush(q);
+        // Update cooresponding graphic boxes (position, rotation, texture).
+        graphicsRects[i]->setPos(300+position.x*40, 600+(-position.y*60)); // Transform from world to Graphics view coordinates
 
         // Rotate about center
         QPointF center = QPointF(graphicsRects[i]->rect().center());
@@ -86,6 +70,9 @@ void MainWindow::updateRects(b2Body* bodies){
         t.translate(-center.x(), -center.y());
         graphicsRects[i]->setTransform(t);
 
+        // Draw the texture onto the box in the graphics view.
+        graphicsRects[i]->setBrush(model->bodyTexture);
+
         // Iterate to next body in world and graphics rect.
         bodies = bodies->GetNext();
         ++i;
@@ -94,7 +81,7 @@ void MainWindow::updateRects(b2Body* bodies){
 
 void MainWindow::initializeImages()
 {
-    //ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
+    ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
 }
 
 

@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/Resources">
         <file>Sprites/spriteFrontPot.png</file>
+        <file>Sprites/pixel-strawberry.jpg</file>
     </qresource>
 </RCC>

@@ -16,15 +16,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(Model& model, QWidget *parent = nullptr);
     ~MainWindow();
-    QGraphicsRectItem* rect = new QGraphicsRectItem(250,500,100,100);
 
     std::vector<QGraphicsRectItem*> graphicsRects;
 
-    void drawGround();
-    void drawBoxes();
 
 public slots:
-    void updateRectPos(int, int, int);
     void updateRects(b2Body*);
 
 private slots:
@@ -32,6 +28,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     void initializeImages();
+    Model* model;
 
 };
 #endif // MAINWINDOW_H

@@ -15,8 +15,9 @@ public:
     b2World world;
     b2Body* body;
     QTimer *timer;
+    QBrush bodyTexture;
 
-    int numberBodies = {20};
+    int numberBodies = {15};
     int screenIndex {0};
 
     // Prepare for simulation. Typically we use a time step of 1/60 of a

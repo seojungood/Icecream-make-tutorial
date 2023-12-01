@@ -1,5 +1,6 @@
 #include "model.h"
 #include <QTimer>
+#include <QDebug>
 
 Model::Model(QObject *parent)
     : QObject{parent}, world(b2Vec2(0.0f, -10.0f))
@@ -54,6 +55,9 @@ Model::Model(QObject *parent)
         body->CreateFixture(&fixtureDef); // Add fixture to body
     }
 
+
+    // Set texture
+    bodyTexture.setTextureImage(QImage(":/Resources/Sprites/spriteFrontPot.png").scaled(100,100));
 
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Model::updateWorldSlot);
