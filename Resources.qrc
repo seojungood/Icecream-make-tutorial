@@ -2,5 +2,7 @@
     <qresource prefix="/Resources">
         <file>Sprites/spriteFrontPot.png</file>
         <file>Sprites/pixel-strawberry.jpg</file>
+        <file>Sprites/greenCircle.png</file>
+        <file>Sprites/whiteCircle.png</file>
     </qresource>
 </RCC>

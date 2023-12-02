@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="screen00Start">
      <widget class="QLabel" name="label">
@@ -206,7 +206,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="screen04Churn">
+    <widget class="Churn" name="screen04Churn">
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
@@ -276,6 +276,14 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Churn</class>
+   <extends>QWidget</extends>
+   <header location="global">churn.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
