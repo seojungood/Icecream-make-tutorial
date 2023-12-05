@@ -65,7 +65,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Heavy Cream</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="buttonMilk">
@@ -78,7 +78,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Whole Milk</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="buttonSugar">
@@ -91,7 +91,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Sugar</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="buttonSalt">
@@ -104,7 +104,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Salt</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="buttonVanilla">
@@ -117,7 +117,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Vanilla Extract</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="labelFrontPot">

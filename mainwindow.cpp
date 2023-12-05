@@ -106,6 +106,11 @@ void MainWindow::updateIngredientButtonClicked(std::string ingredient)
 void MainWindow::initializeImages()
 {
     ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
+    ui->buttonCream->setIcon(QIcon(":/Resources/Sprites/cream.png"));
+    ui->buttonMilk->setIcon(QIcon(":/Resources/Sprites/milk.png"));
+    ui->buttonSugar->setIcon(QIcon(":/Resources/Sprites/sugar.png"));
+    ui->buttonSalt->setIcon(QIcon(":/Resources/Sprites/salt.png"));
+    ui->buttonVanilla->setIcon(QIcon(":/Resources/Sprites/vanilla.png"));
 }
 
 
