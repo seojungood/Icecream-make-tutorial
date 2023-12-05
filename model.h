@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QMainWindow>
 #include <Box2D/Box2D.h>
-#include <QVector>
+#include <vector>
 
 class Model : public QObject
 {
@@ -13,11 +13,15 @@ public:
     explicit Model(QObject *parent = nullptr);
 
     b2World world;
-    b2Body* body;
+    std::vector<b2Body*> bodies;
+    b2BodyDef bodyDef;
+    b2FixtureDef fixtureDef;
+    b2PolygonShape dynamicBox;
+
     QTimer *timer;
     QBrush bodyTexture;
 
-    int numberBodies = {15};
+    int numberBodies = {1};
     int screenIndex {0};
 
     // Prepare for simulation. Typically we use a time step of 1/60 of a
@@ -29,6 +33,7 @@ public:
 
 signals:
     void sendBodies(b2Body*);
+    void sendBodiesList(std::vector<b2Body*>);
     void setScreenToSwitch(int);
 
 public slots:

@@ -22,8 +22,11 @@ public:
 
 public slots:
     void updateRects(b2Body*);
+    void updateRects2(std::vector<b2Body*>);
 
 private slots:
+
+    void on_buttonCream_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -23,62 +23,40 @@ Model::Model(QObject *parent)
     // Add the ground fixture to the ground body.
     groundBody->CreateFixture(&groundBox, 0.0f);
 
-
     // Define the dynamic body. We set its position and call the body factory.
-    b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
-    //bodyDef.position.Set(0.0f, 4.0f);
-    //body = world.CreateBody(&bodyDef); // Add a body to the world
+    bodyDef.linearDamping = 1;
+    bodyDef.position.Set((0), 10.0f);
 
     // Define another box shape for our dynamic body.
-    b2PolygonShape dynamicBox;
+    // b2PolygonShape dynamicBox;
     dynamicBox.SetAsBox(1.0f, 1.0f);
 
     // Define the dynamic body fixture.
-    b2FixtureDef fixtureDef;
     fixtureDef.shape = &dynamicBox;
-
-    // Set the box restitution (bounciness)
     fixtureDef.restitution = 0.9;
-    // Set the box density to be non-zero, so it will be dynamic.
     fixtureDef.density = 1.0f;
-    // Override the default friction.
     fixtureDef.friction = 0.3f;
-
-    // Add the shape to the body.
-    //body->CreateFixture(&fixtureDef); // Set properties of the body
 
     // Add boxes into the world
     for(int i = 0; i < numberBodies; i++){
-        bodyDef.position.Set((0), 10.0f);
-        body = world.CreateBody(&bodyDef); // Add body to world
+        b2Body* body = world.CreateBody(&bodyDef); // Add body to world
         body->CreateFixture(&fixtureDef); // Add fixture to body
+
+        bodies.push_back(body);
     }
-
-
-    // Set texture
-    bodyTexture.setTextureImage(QImage(":/Resources/Sprites/spriteFrontPot.png").scaled(100,100));
 
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Model::updateWorldSlot);
     timer->start(1000/60);
-
 }
 
 void Model::updateWorldSlot(){
     // Instruct the world to perform a single step of simulation.
-    // It is generally best to keep the time step and iterations fixed.
     world.Step(timeStep, velocityIterations, positionIterations);
 
-
-    // Now print the position and angle of the body.
-    b2Vec2 position = body->GetPosition();
-    float32 angle = body->GetAngle();
-
-    //printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
-
-    emit sendBodies(world.GetBodyList());
-    //emit sendNewRecPos(position.x*100, -position.y*100, angle*100);
+    //emit sendBodies(world.GetBodyList());
+    emit sendBodiesList(bodies);
 }
 
 void Model::incrementScreen()

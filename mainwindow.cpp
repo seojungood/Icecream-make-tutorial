@@ -4,6 +4,8 @@
 #include <QDebug>
 #include <QPushButton>
 #include <QStackedWidget>
+#include <QTimer>
+
 #include "model.h"
 
 MainWindow::MainWindow(Model& model, QWidget *parent)
@@ -30,6 +32,8 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     }
 
     connect(&model, &Model::sendBodies, this, &MainWindow::updateRects);
+    connect(&model, &Model::sendBodiesList, this, &MainWindow::updateRects2);
+
 
     // Screen switching connections
     connect(ui->buttonNext, &QPushButton::clicked, &model, &Model::incrementScreen);
@@ -60,7 +64,7 @@ void MainWindow::updateRects(b2Body* bodies){
         float32 angle = bodies->GetAngle();
 
         // Update cooresponding graphic boxes (position, rotation, texture).
-        graphicsRects[i]->setPos(300+position.x*40, 600+(-position.y*60)); // Transform from world to Graphics view coordinates
+        graphicsRects[i]->setPos(300+position.x*40, 600+(-position.y*50)); // Transform from world to Graphics view coordinates
 
         // Rotate about center
         QPointF center = QPointF(graphicsRects[i]->rect().center());
@@ -71,11 +75,41 @@ void MainWindow::updateRects(b2Body* bodies){
         graphicsRects[i]->setTransform(t);
 
         // Draw the texture onto the box in the graphics view.
-        graphicsRects[i]->setBrush(model->bodyTexture);
+        //graphicsRects[i]->setBrush(model->bodyTexture);
+        graphicsRects[i]->setBrush(QBrush(Qt::black));
 
         // Iterate to next body in world and graphics rect.
         bodies = bodies->GetNext();
         ++i;
+    }
+}
+
+void MainWindow::updateRects2(std::vector<b2Body*> bodies){
+
+    for(int i=0; i<bodies.size(); ++i){
+        // Currenct body is the world ground, do not draw it.
+        if(bodies[i]->GetType() == b2_staticBody){
+            continue;
+        }
+
+        // Position and angle of the body in the world.
+        b2Vec2 position = bodies[i]->GetPosition();
+        float32 angle = bodies[i]->GetAngle();
+
+        // Update cooresponding graphic boxes (position, rotation, texture).
+        graphicsRects[i]->setPos(300+position.x*40, 600+(-position.y*50)); // Transform from world to Graphics view coordinates
+
+        // Rotate about center
+        QPointF center = QPointF(graphicsRects[i]->rect().center());
+        QTransform t;
+        t.translate(center.x(), center.y());
+        t.rotate(-(angle * 360.0) / (2 * 3.14159265));
+        t.translate(-center.x(), -center.y());
+        graphicsRects[i]->setTransform(t);
+
+        // Draw the texture onto the box in the graphics view.
+        //graphicsRects[i]->setBrush(model->bodyTexture);
+        //graphicsRects[i]->setBrush(QBrush(Qt::black));
     }
 }
 
@@ -84,4 +118,23 @@ void MainWindow::initializeImages()
     ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
 }
 
+
+void MainWindow::on_buttonCream_clicked()
+{
+    // Set texture
+    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/spriteFrontPot.png").scaled(100,100));
+
+    // Create the rectangle in graphics view
+    QGraphicsRectItem* rect = new QGraphicsRectItem(0,0,100,100);
+    rect->setFlag(QGraphicsItem::ItemIsMovable, true);
+    rect->setPen(Qt::NoPen);
+    rect->setBrush(model->bodyTexture);
+    graphicsRects.push_back(rect);
+    ui->graphicsView->scene()->addItem(rect);
+
+    //Add box into the world
+    b2Body* body = model->world.CreateBody(&model->bodyDef); // Add body to world
+    body->CreateFixture(&model->fixtureDef); // Add fixture to body
+    model->bodies.push_back(body);
+}
 
