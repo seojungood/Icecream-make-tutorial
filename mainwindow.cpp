@@ -36,6 +36,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     connect(&model, &Model::sendBodiesList, this, &MainWindow::updateRects);
 
+    // Start Screen button connections
+    connect(ui->startGameButton, &QPushButton::clicked, &model, &Model::incrementScreen);
+
     // Screen switching connections
     connect(ui->buttonNext, &QPushButton::clicked, &model, &Model::incrementScreen);
     connect(ui->buttonPrevious, &QPushButton::clicked, &model, &Model::decrementScreen);
@@ -53,6 +56,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::on_exitGameButton_clicked()
+{
+    MainWindow::close();
+}
 
 void MainWindow::updateRects(std::vector<b2Body*> bodies){
 
@@ -177,3 +184,4 @@ void MainWindow::addBodyToWorld(){
     body->CreateFixture(&model->fixtureDef); // Add fixture to body
     model->bodies.push_back(body);
 }
+

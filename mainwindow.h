@@ -36,6 +36,8 @@ private slots:
 
     void on_buttonVanilla_clicked();
 
+    void on_exitGameButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     void initializeImages();
