@@ -4,5 +4,9 @@
         <file>Sprites/pixel-strawberry.jpg</file>
         <file>Sprites/greenCircle.png</file>
         <file>Sprites/whiteCircle.png</file>
+        <file>Sprites/bolt.png</file>
+        <file>Sprites/handle.png</file>
+        <file>Sprites/churner.png</file>
+        <file>Sprites/churnRing.png</file>
     </qresource>
 </RCC>
