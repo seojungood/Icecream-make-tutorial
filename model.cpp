@@ -80,6 +80,3 @@ void Model::getIngredientClicked(std::string ingredient)
 {
     emit sendIngredientClicked(ingredient);
 }
-
-
-

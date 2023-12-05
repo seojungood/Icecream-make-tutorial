@@ -21,8 +21,7 @@ public:
 
 
 public slots:
-    void updateRects(b2Body*);
-    void updateRects2(std::vector<b2Body*>);
+    void updateRects(std::vector<b2Body*>);
     void updateIngredientButtonClicked(std::string);
 
 private slots:
