@@ -124,6 +124,46 @@ void MainWindow::on_buttonCream_clicked()
     // Set texture
     model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/spriteFrontPot.png").scaled(100,100));
 
+    addBodyToWorld();
+}
+
+
+void MainWindow::on_buttonMilk_clicked()
+{
+    // Set texture
+    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/spriteFrontPot.png").scaled(100,100));
+
+    addBodyToWorld();
+}
+
+
+void MainWindow::on_buttonSugar_clicked()
+{
+    // Set texture
+    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/spriteFrontPot.png").scaled(100,100));
+
+    addBodyToWorld();
+}
+
+
+void MainWindow::on_buttonSalt_clicked()
+{
+    // Set texture
+    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/spriteFrontPot.png").scaled(100,100));
+
+    addBodyToWorld();
+}
+
+
+void MainWindow::on_buttonVanilla_clicked()
+{
+    // Set texture
+    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/spriteFrontPot.png").scaled(100,100));
+
+    addBodyToWorld();
+}
+
+void MainWindow::addBodyToWorld(){
     // Create the rectangle in graphics view
     QGraphicsRectItem* rect = new QGraphicsRectItem(0,0,100,100);
     rect->setFlag(QGraphicsItem::ItemIsMovable, true);

@@ -28,9 +28,18 @@ private slots:
 
     void on_buttonCream_clicked();
 
+    void on_buttonMilk_clicked();
+
+    void on_buttonSugar_clicked();
+
+    void on_buttonSalt_clicked();
+
+    void on_buttonVanilla_clicked();
+
 private:
     Ui::MainWindow *ui;
     void initializeImages();
+    void addBodyToWorld();
     Model* model;
 
 };
