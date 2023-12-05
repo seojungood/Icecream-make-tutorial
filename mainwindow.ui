@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>851</width>
-    <height>649</height>
+    <width>883</width>
+    <height>635</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -171,22 +171,9 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>800</width>
+        <width>851</width>
         <height>600</height>
        </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="buttonNext">
-      <property name="geometry">
-       <rect>
-        <x>700</x>
-        <y>10</y>
-        <width>100</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Next</string>
       </property>
      </widget>
      <zorder>addIngredientsGraphicsView</zorder>
@@ -199,7 +186,6 @@
      <zorder>labelBackPot</zorder>
      <zorder>label_2</zorder>
      <zorder>labelFrontPot</zorder>
-     <zorder>buttonNext</zorder>
     </widget>
     <widget class="QWidget" name="screen02Boil">
      <widget class="QLabel" name="label_3">
@@ -285,13 +271,26 @@
      <string>Previous</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="buttonNext">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>12</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Next</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>851</width>
+     <width>883</width>
      <height>21</height>
     </rect>
    </property>

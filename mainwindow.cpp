@@ -20,6 +20,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     QGraphicsScene* scene = new QGraphicsScene(0,0,800,600, ui->addIngredientsGraphicsView);
     scene->setBackgroundBrush(Qt::white);
     ui->addIngredientsGraphicsView->setScene(scene);
+    ui->addIngredientsGraphicsView->setEnabled(false);
 
 
     // Delete Later.l;
