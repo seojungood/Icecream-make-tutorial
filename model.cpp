@@ -76,3 +76,11 @@ void Model::decrementScreen()
     }
     emit setScreenToSwitch(screenIndex);
 }
+
+void Model::getIngredientClicked(std::string ingredient)
+{
+    emit sendIngredientClicked(ingredient);
+}
+
+
+
