@@ -29,7 +29,6 @@ Model::Model(QObject *parent)
     bodyDef.position.Set((0), 10.0f);
 
     // Define another box shape for our dynamic body.
-    // b2PolygonShape dynamicBox;
     dynamicBox.SetAsBox(1.0f, 1.0f);
 
     // Define the dynamic body fixture.

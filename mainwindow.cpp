@@ -17,10 +17,12 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     this->model = &model;
 
     // Set the background
-    QGraphicsScene* scene = new QGraphicsScene(0,0,800,600, ui->graphicsView);
+    QGraphicsScene* scene = new QGraphicsScene(0,0,800,600, ui->addIngredientsGraphicsView);
     scene->setBackgroundBrush(Qt::white);
-    ui->graphicsView->setScene(scene);
+    ui->addIngredientsGraphicsView->setScene(scene);
 
+
+    // Delete Later.l;
     // Create the rectangles in graphics view
     for(int i = 0; i < model.numberBodies; ++i)
     {
@@ -106,10 +108,6 @@ void MainWindow::updateRects2(std::vector<b2Body*> bodies){
         t.rotate(-(angle * 360.0) / (2 * 3.14159265));
         t.translate(-center.x(), -center.y());
         graphicsRects[i]->setTransform(t);
-
-        // Draw the texture onto the box in the graphics view.
-        //graphicsRects[i]->setBrush(model->bodyTexture);
-        //graphicsRects[i]->setBrush(QBrush(Qt::black));
     }
 }
 
@@ -122,7 +120,7 @@ void MainWindow::initializeImages()
 void MainWindow::on_buttonCream_clicked()
 {
     // Set texture
-    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/spriteFrontPot.png").scaled(100,100));
+    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/cream.png").scaled(100,100));
 
     addBodyToWorld();
 }
@@ -131,7 +129,7 @@ void MainWindow::on_buttonCream_clicked()
 void MainWindow::on_buttonMilk_clicked()
 {
     // Set texture
-    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/spriteFrontPot.png").scaled(100,100));
+    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/milk.png").scaled(100,100));
 
     addBodyToWorld();
 }
@@ -140,7 +138,7 @@ void MainWindow::on_buttonMilk_clicked()
 void MainWindow::on_buttonSugar_clicked()
 {
     // Set texture
-    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/spriteFrontPot.png").scaled(100,100));
+    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/sugar.png").scaled(100,100));
 
     addBodyToWorld();
 }
@@ -149,7 +147,7 @@ void MainWindow::on_buttonSugar_clicked()
 void MainWindow::on_buttonSalt_clicked()
 {
     // Set texture
-    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/spriteFrontPot.png").scaled(100,100));
+    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/salt.png").scaled(100,100));
 
     addBodyToWorld();
 }
@@ -158,7 +156,7 @@ void MainWindow::on_buttonSalt_clicked()
 void MainWindow::on_buttonVanilla_clicked()
 {
     // Set texture
-    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/spriteFrontPot.png").scaled(100,100));
+    model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/vanilla.png").scaled(100,100));
 
     addBodyToWorld();
 }
@@ -170,11 +168,10 @@ void MainWindow::addBodyToWorld(){
     rect->setPen(Qt::NoPen);
     rect->setBrush(model->bodyTexture);
     graphicsRects.push_back(rect);
-    ui->graphicsView->scene()->addItem(rect);
+    ui->addIngredientsGraphicsView->scene()->addItem(rect);
 
     //Add box into the world
     b2Body* body = model->world.CreateBody(&model->bodyDef); // Add body to world
     body->CreateFixture(&model->fixtureDef); // Add fixture to body
     model->bodies.push_back(body);
 }
-
