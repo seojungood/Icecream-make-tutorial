@@ -23,6 +23,7 @@ public:
 public slots:
     void updateRects(b2Body*);
     void updateRects2(std::vector<b2Body*>);
+    void updateIngredientButtonClicked(std::string);
 
 private slots:
 
@@ -41,6 +42,9 @@ private:
     void initializeImages();
     void addBodyToWorld();
     Model* model;
+
+signals:
+    void onIngredientButtonClicked(std::string);
 
 };
 #endif // MAINWINDOW_H

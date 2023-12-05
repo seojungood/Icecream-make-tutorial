@@ -35,11 +35,13 @@ signals:
     void sendBodies(b2Body*);
     void sendBodiesList(std::vector<b2Body*>);
     void setScreenToSwitch(int);
+    void sendIngredientClicked(std::string);
 
 public slots:
     void updateWorldSlot();
     void incrementScreen();
     void decrementScreen();
+    void getIngredientClicked(std::string);
 };
 
 #endif // MODEL_H

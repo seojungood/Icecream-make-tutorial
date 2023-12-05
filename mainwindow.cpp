@@ -36,11 +36,14 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(&model, &Model::sendBodies, this, &MainWindow::updateRects);
     connect(&model, &Model::sendBodiesList, this, &MainWindow::updateRects2);
 
-
     // Screen switching connections
     connect(ui->buttonNext, &QPushButton::clicked, &model, &Model::incrementScreen);
     connect(ui->buttonPrevious, &QPushButton::clicked, &model, &Model::decrementScreen);
     connect(&model, &Model::setScreenToSwitch, ui->gameScreens, &QStackedWidget::setCurrentIndex);
+
+    // Add Ingredients connections
+    connect(this, &MainWindow::onIngredientButtonClicked, &model, &Model::getIngredientClicked);
+    connect(&model, &Model::sendIngredientClicked, this, &MainWindow::updateIngredientButtonClicked);
 
     initializeImages();
 }
@@ -111,6 +114,30 @@ void MainWindow::updateRects2(std::vector<b2Body*> bodies){
     }
 }
 
+void MainWindow::updateIngredientButtonClicked(std::string ingredient)
+{
+    if (ingredient == "cream") {
+        ui->buttonCream->setVisible(false);
+        ui->buttonCream->setEnabled(false);
+    }
+    else if (ingredient == "milk") {
+        ui->buttonMilk->setVisible(false);
+        ui->buttonMilk->setEnabled(false);
+    }
+    else if (ingredient == "salt") {
+        ui->buttonSalt->setVisible(false);
+        ui->buttonSalt->setEnabled(false);
+    }
+    else if (ingredient == "sugar") {
+        ui->buttonSugar->setVisible(false);
+        ui->buttonSugar->setEnabled(false);
+    }
+    else if (ingredient == "vanilla") {
+        ui->buttonVanilla->setVisible(false);
+        ui->buttonVanilla->setEnabled(false);
+    }
+}
+
 void MainWindow::initializeImages()
 {
     ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
@@ -123,6 +150,7 @@ void MainWindow::on_buttonCream_clicked()
     model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/cream.png").scaled(100,100));
 
     addBodyToWorld();
+    emit onIngredientButtonClicked("cream");
 }
 
 
@@ -132,6 +160,7 @@ void MainWindow::on_buttonMilk_clicked()
     model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/milk.png").scaled(100,100));
 
     addBodyToWorld();
+    emit onIngredientButtonClicked("milk");
 }
 
 
@@ -141,6 +170,7 @@ void MainWindow::on_buttonSugar_clicked()
     model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/sugar.png").scaled(100,100));
 
     addBodyToWorld();
+    emit onIngredientButtonClicked("sugar");
 }
 
 
@@ -150,6 +180,7 @@ void MainWindow::on_buttonSalt_clicked()
     model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/salt.png").scaled(100,100));
 
     addBodyToWorld();
+    emit onIngredientButtonClicked("salt");
 }
 
 
@@ -159,6 +190,7 @@ void MainWindow::on_buttonVanilla_clicked()
     model->bodyTexture.setTextureImage(QImage(":/Resources/Sprites/vanilla.png").scaled(100,100));
 
     addBodyToWorld();
+    emit onIngredientButtonClicked("vanilla");
 }
 
 void MainWindow::addBodyToWorld(){
