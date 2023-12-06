@@ -114,10 +114,15 @@ void MainWindow::initializeImages()
 {
     ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
     ui->buttonCream->setIcon(QIcon(":/Resources/Sprites/cream.png"));
+    ui->buttonCream->setIconSize(QSize(500, 500));
     ui->buttonMilk->setIcon(QIcon(":/Resources/Sprites/milk.png"));
+    ui->buttonMilk->setIconSize(QSize(500, 500));
     ui->buttonSugar->setIcon(QIcon(":/Resources/Sprites/sugar.png"));
+    ui->buttonSugar->setIconSize(QSize(500, 500));
     ui->buttonSalt->setIcon(QIcon(":/Resources/Sprites/salt.png"));
+    ui->buttonSalt->setIconSize(QSize(500, 500));
     ui->buttonVanilla->setIcon(QIcon(":/Resources/Sprites/vanilla.png"));
+    ui->buttonVanilla->setIconSize(QSize(500, 500));
 }
 
 
