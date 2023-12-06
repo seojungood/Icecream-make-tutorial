@@ -13,5 +13,6 @@
         <file>Sprites/sugar.png</file>
         <file>Sprites/vanilla.png</file>
         <file>Sprites/IngredientList.png</file>
+        <file>Sprites/Strikethrough.png</file>
     </qresource>
 </RCC>

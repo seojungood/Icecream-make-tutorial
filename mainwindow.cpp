@@ -91,28 +91,43 @@ void MainWindow::updateIngredientButtonClicked(std::string ingredient)
     if (ingredient == "cream") {
         ui->buttonCream->setVisible(false);
         ui->buttonCream->setEnabled(false);
+        ui->strikethroughCream->setVisible(true);
     }
     else if (ingredient == "milk") {
         ui->buttonMilk->setVisible(false);
         ui->buttonMilk->setEnabled(false);
+        ui->strikethroughMilk->setVisible(true);
     }
     else if (ingredient == "salt") {
         ui->buttonSalt->setVisible(false);
         ui->buttonSalt->setEnabled(false);
+        ui->strikethroughSalt->setVisible(true);
     }
     else if (ingredient == "sugar") {
         ui->buttonSugar->setVisible(false);
         ui->buttonSugar->setEnabled(false);
+        ui->strikethroughSugar->setVisible(true);
     }
     else if (ingredient == "vanilla") {
         ui->buttonVanilla->setVisible(false);
         ui->buttonVanilla->setEnabled(false);
+        ui->strikethroughVanilla->setVisible(true);
     }
 }
 
 void MainWindow::initializeImages()
 {
     ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
+    ui->strikethroughCream->setVisible(false);
+    ui->strikethroughMilk->setVisible(false);
+    ui->strikethroughSugar->setVisible(false);
+    ui->strikethroughSalt->setVisible(false);
+    ui->strikethroughVanilla->setVisible(false);
+    ui->strikethroughCream->setPixmap(QPixmap(":/Resources/Sprites/Strikethrough"));
+    ui->strikethroughMilk->setPixmap(QPixmap(":/Resources/Sprites/Strikethrough"));
+    ui->strikethroughSugar->setPixmap(QPixmap(":/Resources/Sprites/Strikethrough"));
+    ui->strikethroughSalt->setPixmap(QPixmap(":/Resources/Sprites/Strikethrough"));
+    ui->strikethroughVanilla->setPixmap(QPixmap(":/Resources/Sprites/Strikethrough"));
     ui->buttonCream->setIcon(QIcon(":/Resources/Sprites/cream.png"));
     ui->buttonCream->setIconSize(QSize(500, 500));
     ui->buttonMilk->setIcon(QIcon(":/Resources/Sprites/milk.png"));
@@ -123,6 +138,7 @@ void MainWindow::initializeImages()
     ui->buttonSalt->setIconSize(QSize(500, 500));
     ui->buttonVanilla->setIcon(QIcon(":/Resources/Sprites/vanilla.png"));
     ui->buttonVanilla->setIconSize(QSize(500, 500));
+    ui->labelIngredientList->setPixmap(QPixmap(":/Resources/Sprites/IngredientList"));
 }
 
 
