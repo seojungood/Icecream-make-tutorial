@@ -78,3 +78,8 @@ void Model::getIngredientClicked(std::string ingredient)
     }
     emit sendIngredientClicked(ingredient);
 }
+
+void Model::handleChillingComplete()
+{
+    QTimer::singleShot(7000, this, &Model::incrementScreen);
+}

@@ -49,6 +49,7 @@ private:
 
 signals:
     void onIngredientButtonClicked(std::string);
+    void onChillingComplete();
 
 };
 #endif // MAINWINDOW_H

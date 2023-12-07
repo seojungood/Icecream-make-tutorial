@@ -48,6 +48,7 @@ public slots:
     void incrementScreen();
     void decrementScreen();
     void getIngredientClicked(std::string);
+    void handleChillingComplete();
 };
 
 #endif // MODEL_H

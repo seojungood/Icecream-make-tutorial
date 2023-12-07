@@ -51,6 +51,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     initializeImages();
 
     ui->blackScreenWidget->setVisible(false);
+    connect(this, &MainWindow::onChillingComplete, &model, &Model::handleChillingComplete);
 }
 
 MainWindow::~MainWindow()
@@ -232,7 +233,7 @@ void MainWindow::on_chillMixtureButton_clicked()
     });
 
     animation->start();
-
+    emit onChillingComplete();
 }
 
 void MainWindow::addBodyToEndScreen(){
