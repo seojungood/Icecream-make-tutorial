@@ -58,6 +58,7 @@ void Model::incrementScreen()
         screenIndex = 0;
     }
     if (screenIndex == 1) {
+        ingredientsAdded = 0;
         emit resetAddIngredientsScreen();
     }
     emit setScreenToSwitch(screenIndex);
@@ -76,7 +77,6 @@ void Model::getIngredientClicked(std::string ingredient)
 {
     ingredientsAdded++;
     if (ingredientsAdded == 5) {
-        qDebug() << "All ingredients added";
         QTimer::singleShot(2000, this, &Model::incrementScreen);
     }
     emit sendIngredientClicked(ingredient);

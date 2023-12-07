@@ -18,9 +18,13 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     this->model = &model;
 
+
+
     // Set the background for Ingredient Screen
     QGraphicsScene* scene = new QGraphicsScene(0,0,800,600, ui->addIngredientsGraphicsView);
     scene->setBackgroundBrush(Qt::white);
+    QGraphicsPixmapItem* item = new QGraphicsPixmapItem(QPixmap(":/Resources/Sprites/kitchen.jpg"));
+    scene->addItem(item);
     ui->addIngredientsGraphicsView->setScene(scene);
     ui->addIngredientsGraphicsView->setEnabled(false);
 
@@ -158,6 +162,7 @@ void MainWindow::initializeAddIngredientsScreen()
     ui->buttonVanilla->setIconSize(QSize(500, 500));
     ui->labelIngredientList->setPixmap(QPixmap(":/Resources/Sprites/IngredientList"));
     ui->labelAddIngredientsPot->setPixmap(QPixmap(":/Resources/Sprites/pot.png"));
+    ui->labelAddIngredients->setPixmap(QPixmap(":/Resources/Sprites/addIngredientsBanner.png"));
 }
 
 
