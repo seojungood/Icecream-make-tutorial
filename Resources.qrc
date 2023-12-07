@@ -14,5 +14,8 @@
         <file>Sprites/vanilla.png</file>
         <file>Sprites/IngredientList.png</file>
         <file>Sprites/Strikethrough.png</file>
+        <file>Sprites/pot.png</file>
+        <file>Sprites/potOnStove1.png</file>
+        <file>Sprites/potOnStove2.png</file>
     </qresource>
 </RCC>
