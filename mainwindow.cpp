@@ -47,8 +47,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     // Add Ingredients connections
     connect(this, &MainWindow::onIngredientButtonClicked, &model, &Model::getIngredientClicked);
     connect(&model, &Model::sendIngredientClicked, this, &MainWindow::updateIngredientButtonClicked);
+    connect(&model, &Model::resetAddIngredientsScreen, this, &MainWindow::resetAddIngredientsScreen);
 
-    initializeImages();
+    initializeAddIngredientsScreen();
 
     ui->blackScreenWidget->setVisible(false);
     connect(this, &MainWindow::onChillingComplete, &model, &Model::handleChillingComplete);
@@ -119,14 +120,27 @@ void MainWindow::updateIngredientButtonClicked(std::string ingredient)
     }
 }
 
-void MainWindow::initializeImages()
+void MainWindow::resetAddIngredientsScreen()
 {
-    ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
     ui->strikethroughCream->setVisible(false);
     ui->strikethroughMilk->setVisible(false);
     ui->strikethroughSugar->setVisible(false);
     ui->strikethroughSalt->setVisible(false);
     ui->strikethroughVanilla->setVisible(false);
+    ui->buttonCream->setVisible(true);
+    ui->buttonCream->setEnabled(true);
+    ui->buttonMilk->setVisible(true);
+    ui->buttonMilk->setEnabled(true);
+    ui->buttonSalt->setVisible(true);
+    ui->buttonSalt->setEnabled(true);
+    ui->buttonSugar->setVisible(true);
+    ui->buttonSugar->setEnabled(true);
+    ui->buttonVanilla->setVisible(true);
+    ui->buttonVanilla->setEnabled(true);
+}
+
+void MainWindow::initializeAddIngredientsScreen()
+{
     ui->strikethroughCream->setPixmap(QPixmap(":/Resources/Sprites/Strikethrough"));
     ui->strikethroughMilk->setPixmap(QPixmap(":/Resources/Sprites/Strikethrough"));
     ui->strikethroughSugar->setPixmap(QPixmap(":/Resources/Sprites/Strikethrough"));
@@ -143,6 +157,7 @@ void MainWindow::initializeImages()
     ui->buttonVanilla->setIcon(QIcon(":/Resources/Sprites/vanilla.png"));
     ui->buttonVanilla->setIconSize(QSize(500, 500));
     ui->labelIngredientList->setPixmap(QPixmap(":/Resources/Sprites/IngredientList"));
+    ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
 }
 
 

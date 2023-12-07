@@ -57,6 +57,9 @@ void Model::incrementScreen()
     if (screenIndex > 5) {
         screenIndex = 0;
     }
+    if (screenIndex == 1) {
+        emit resetAddIngredientsScreen();
+    }
     emit setScreenToSwitch(screenIndex);
 }
 

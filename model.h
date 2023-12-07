@@ -42,6 +42,7 @@ signals:
     void sendBodiesList(std::vector<b2Body*>);
     void setScreenToSwitch(int);
     void sendIngredientClicked(std::string);
+    void resetAddIngredientsScreen();
 
 public slots:
     void updateWorldSlot();

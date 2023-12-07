@@ -42,7 +42,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    void initializeImages();
+    void resetAddIngredientsScreen();
+    void initializeAddIngredientsScreen();
     void addBodyToWorld();
     void addBodyToEndScreen();
     Model* model;
