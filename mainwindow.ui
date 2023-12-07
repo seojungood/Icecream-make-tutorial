@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>621</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,12 +19,12 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>801</width>
+      <width>800</width>
       <height>600</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="screen00Start">
      <property name="styleSheet">
@@ -126,9 +126,9 @@ background-color: rgb(90, 90, 90);</string>
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>35</y>
-        <width>100</width>
-        <height>100</height>
+        <y>0</y>
+        <width>120</width>
+        <height>120</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -142,9 +142,9 @@ background-color: rgb(90, 90, 90);</string>
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>145</y>
-        <width>100</width>
-        <height>100</height>
+        <y>120</y>
+        <width>120</width>
+        <height>120</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -158,9 +158,9 @@ background-color: rgb(90, 90, 90);</string>
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>256</y>
-        <width>100</width>
-        <height>100</height>
+        <y>240</y>
+        <width>120</width>
+        <height>120</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -173,10 +173,10 @@ background-color: rgb(90, 90, 90);</string>
      <widget class="QPushButton" name="buttonSalt">
       <property name="geometry">
        <rect>
-        <x>651</x>
-        <y>365</y>
-        <width>100</width>
-        <height>100</height>
+        <x>650</x>
+        <y>360</y>
+        <width>120</width>
+        <height>120</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -190,9 +190,9 @@ background-color: rgb(90, 90, 90);</string>
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>475</y>
-        <width>100</width>
-        <height>100</height>
+        <y>480</y>
+        <width>120</width>
+        <height>120</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -202,20 +202,23 @@ background-color: rgb(90, 90, 90);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="labelFrontPot">
+     <widget class="QLabel" name="labelAddIngredientsPot">
       <property name="geometry">
        <rect>
-        <x>225</x>
-        <y>450</y>
-        <width>300</width>
-        <height>150</height>
+        <x>140</x>
+        <y>254</y>
+        <width>480</width>
+        <height>480</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background: red</string>
+       <string notr="true"/>
       </property>
       <property name="text">
-       <string>FrontPot</string>
+       <string>Pot</string>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="labelIngredientList">
@@ -228,7 +231,7 @@ background-color: rgb(90, 90, 90);</string>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>Ingredient List</string>
       </property>
      </widget>
      <widget class="QGraphicsView" name="addIngredientsGraphicsView">
@@ -251,7 +254,7 @@ background-color: rgb(90, 90, 90);</string>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>Strikethrough Sugar</string>
       </property>
      </widget>
      <widget class="QLabel" name="strikethroughCream">
@@ -264,7 +267,7 @@ background-color: rgb(90, 90, 90);</string>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>Strikethrough Cream</string>
       </property>
      </widget>
      <widget class="QLabel" name="strikethroughVanilla">
@@ -277,7 +280,7 @@ background-color: rgb(90, 90, 90);</string>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>Strikethrough Vanilla</string>
       </property>
      </widget>
      <widget class="QLabel" name="strikethroughMilk">
@@ -290,7 +293,7 @@ background-color: rgb(90, 90, 90);</string>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>Strikethrough milke</string>
       </property>
      </widget>
      <widget class="QLabel" name="strikethroughSalt">
@@ -303,7 +306,7 @@ background-color: rgb(90, 90, 90);</string>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>Strikethrough Salt</string>
       </property>
      </widget>
      <zorder>addIngredientsGraphicsView</zorder>
@@ -314,7 +317,7 @@ background-color: rgb(90, 90, 90);</string>
      <zorder>buttonSalt</zorder>
      <zorder>buttonVanilla</zorder>
      <zorder>labelIngredientList</zorder>
-     <zorder>labelFrontPot</zorder>
+     <zorder>labelAddIngredientsPot</zorder>
      <zorder>strikethroughSugar</zorder>
      <zorder>strikethroughCream</zorder>
      <zorder>strikethroughVanilla</zorder>

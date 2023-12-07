@@ -157,7 +157,7 @@ void MainWindow::initializeAddIngredientsScreen()
     ui->buttonVanilla->setIcon(QIcon(":/Resources/Sprites/vanilla.png"));
     ui->buttonVanilla->setIconSize(QSize(500, 500));
     ui->labelIngredientList->setPixmap(QPixmap(":/Resources/Sprites/IngredientList"));
-    ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
+    ui->labelAddIngredientsPot->setPixmap(QPixmap(":/Resources/Sprites/pot.png"));
 }
 
 
