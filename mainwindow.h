@@ -34,6 +34,8 @@ private slots:
 
     void on_change_to_End_Screen();
 
+    void on_exitGameButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     void initializeImages();

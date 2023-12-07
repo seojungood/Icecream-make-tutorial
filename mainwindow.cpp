@@ -33,6 +33,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     // Connection to world simulation
     connect(&model, &Model::sendBodiesList, this, &MainWindow::updateRects);
 
+    // Start Screen button connections
+    connect(ui->startGameButton, &QPushButton::clicked, &model, &Model::incrementScreen);
+
     // Screen switching connections
     connect(ui->screen04Churn, &Churn::churningComplete, &model, &Model::incrementScreen); // Move from Churn to End Screen
     connect(ui->screen04Churn, &Churn::churningComplete, this, &MainWindow::on_change_to_End_Screen); // Shoot confetti
@@ -53,6 +56,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::on_exitGameButton_clicked()
+{
+    MainWindow::close();
+}
 
 void MainWindow::updateRects(std::vector<b2Body*> bodies){
 
@@ -85,33 +92,54 @@ void MainWindow::updateIngredientButtonClicked(std::string ingredient)
     if (ingredient == "cream") {
         ui->buttonCream->setVisible(false);
         ui->buttonCream->setEnabled(false);
+        ui->strikethroughCream->setVisible(true);
     }
     else if (ingredient == "milk") {
         ui->buttonMilk->setVisible(false);
         ui->buttonMilk->setEnabled(false);
+        ui->strikethroughMilk->setVisible(true);
     }
     else if (ingredient == "salt") {
         ui->buttonSalt->setVisible(false);
         ui->buttonSalt->setEnabled(false);
+        ui->strikethroughSalt->setVisible(true);
     }
     else if (ingredient == "sugar") {
         ui->buttonSugar->setVisible(false);
         ui->buttonSugar->setEnabled(false);
+        ui->strikethroughSugar->setVisible(true);
     }
     else if (ingredient == "vanilla") {
         ui->buttonVanilla->setVisible(false);
         ui->buttonVanilla->setEnabled(false);
+        ui->strikethroughVanilla->setVisible(true);
     }
 }
 
 void MainWindow::initializeImages()
 {
     ui->labelFrontPot->setPixmap(QPixmap(":/Resources/Sprites/spriteFrontPot.png"));
+    ui->strikethroughCream->setVisible(false);
+    ui->strikethroughMilk->setVisible(false);
+    ui->strikethroughSugar->setVisible(false);
+    ui->strikethroughSalt->setVisible(false);
+    ui->strikethroughVanilla->setVisible(false);
+    ui->strikethroughCream->setPixmap(QPixmap(":/Resources/Sprites/Strikethrough"));
+    ui->strikethroughMilk->setPixmap(QPixmap(":/Resources/Sprites/Strikethrough"));
+    ui->strikethroughSugar->setPixmap(QPixmap(":/Resources/Sprites/Strikethrough"));
+    ui->strikethroughSalt->setPixmap(QPixmap(":/Resources/Sprites/Strikethrough"));
+    ui->strikethroughVanilla->setPixmap(QPixmap(":/Resources/Sprites/Strikethrough"));
     ui->buttonCream->setIcon(QIcon(":/Resources/Sprites/cream.png"));
+    ui->buttonCream->setIconSize(QSize(500, 500));
     ui->buttonMilk->setIcon(QIcon(":/Resources/Sprites/milk.png"));
+    ui->buttonMilk->setIconSize(QSize(500, 500));
     ui->buttonSugar->setIcon(QIcon(":/Resources/Sprites/sugar.png"));
+    ui->buttonSugar->setIconSize(QSize(500, 500));
     ui->buttonSalt->setIcon(QIcon(":/Resources/Sprites/salt.png"));
+    ui->buttonSalt->setIconSize(QSize(500, 500));
     ui->buttonVanilla->setIcon(QIcon(":/Resources/Sprites/vanilla.png"));
+    ui->buttonVanilla->setIconSize(QSize(500, 500));
+    ui->labelIngredientList->setPixmap(QPixmap(":/Resources/Sprites/IngredientList"));
 }
 
 
@@ -178,6 +206,7 @@ void MainWindow::addBodyToWorld(){
     model->bodies.push_back(body);
 }
 
+
 void MainWindow::addBodyToEndScreen(){
     // Create the rectangle in graphics view
     QGraphicsRectItem* rect = new QGraphicsRectItem(0,0, 100/8, 100/8);
@@ -241,4 +270,3 @@ void MainWindow::on_change_to_End_Screen(){
         addBodyToEndScreen();
     }
 }
-
