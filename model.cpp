@@ -26,7 +26,7 @@ Model::Model(QObject *parent)
     // Define the dynamic body. We set its position and call the body factory.
     bodyDef.type = b2_dynamicBody;
     bodyDef.linearDamping = 1;
-    bodyDef.position.Set((0), 10.0f);
+    bodyDef.position.Set(0, 10.0f);
 
     // Define another box shape for our dynamic body.
     dynamicBox.SetAsBox(1.0f, 1.0f);
@@ -37,14 +37,7 @@ Model::Model(QObject *parent)
     fixtureDef.density = 1.0f;
     fixtureDef.friction = 0.3f;
 
-    // Add boxes into the world
-    for(int i = 0; i < numberBodies; i++){
-        b2Body* body = world.CreateBody(&bodyDef); // Add body to world
-        body->CreateFixture(&fixtureDef); // Add fixture to body
-
-        bodies.push_back(body);
-    }
-
+    // Start Simulation
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Model::updateWorldSlot);
     timer->start(1000/60);

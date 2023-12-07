@@ -21,8 +21,9 @@ public:
     QTimer *timer;
     QBrush bodyTexture;
 
-    int numberBodies = {1};
-    int screenIndex {0};
+    std::vector<QColor> colors =  {Qt::red,Qt::blue,Qt::yellow,Qt::green,Qt::magenta,Qt::cyan};
+    bool cleanedWorld {false};
+    int screenIndex {4}; // Shoule be initialized to 0!!!
 
     // Prepare for simulation. Typically we use a time step of 1/60 of a
     // second (60Hz) and 10 iterations. This provides a high quality simulation

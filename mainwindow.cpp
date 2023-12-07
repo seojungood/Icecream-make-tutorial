@@ -5,7 +5,9 @@
 #include <QPushButton>
 #include <QStackedWidget>
 #include <QTimer>
+#include <cstdlib>
 
+#include "churn.h"
 #include "model.h"
 
 MainWindow::MainWindow(Model& model, QWidget *parent)
@@ -16,27 +18,25 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     this->model = &model;
 
-    // Set the background
+    // Set the background for Ingredient Screen
     QGraphicsScene* scene = new QGraphicsScene(0,0,800,600, ui->addIngredientsGraphicsView);
     scene->setBackgroundBrush(Qt::white);
     ui->addIngredientsGraphicsView->setScene(scene);
     ui->addIngredientsGraphicsView->setEnabled(false);
 
+    // Set the background for End Screen
+    QGraphicsScene* scene2 = new QGraphicsScene(0,0,800,600, ui->endScreenGraphicsView);
+    scene2->setBackgroundBrush(Qt::white);
+    ui->endScreenGraphicsView->setScene(scene2);
+    ui->endScreenGraphicsView->setEnabled(false);
 
-    // Delete Later.l;
-    // Create the rectangles in graphics view
-    for(int i = 0; i < model.numberBodies; ++i)
-    {
-        QGraphicsRectItem* rect = new QGraphicsRectItem(0,0,100,100);
-        rect->setFlag(QGraphicsItem::ItemIsMovable, true);
-        rect->setPen(Qt::NoPen);
-        graphicsRects.push_back(rect);
-        scene->addItem(rect);
-    }
-
+    // Connection to world simulation
     connect(&model, &Model::sendBodiesList, this, &MainWindow::updateRects);
 
     // Screen switching connections
+    connect(ui->screen04Churn, &Churn::churningComplete, &model, &Model::incrementScreen); // Move from Churn to End Screen
+    connect(ui->screen04Churn, &Churn::churningComplete, this, &MainWindow::on_change_to_End_Screen); // Shoot confetti
+
     connect(ui->buttonNext, &QPushButton::clicked, &model, &Model::incrementScreen);
     connect(ui->buttonPrevious, &QPushButton::clicked, &model, &Model::decrementScreen);
     connect(&model, &Model::setScreenToSwitch, ui->gameScreens, &QStackedWidget::setCurrentIndex);
@@ -59,6 +59,7 @@ void MainWindow::updateRects(std::vector<b2Body*> bodies){
     for(int i=0; i<bodies.size(); ++i){
         // Currenct body is the world ground, do not draw it.
         if(bodies[i]->GetType() == b2_staticBody){
+            graphicsRects[i]->setBrush(QBrush(Qt::black));
             continue;
         }
 
@@ -166,14 +167,78 @@ void MainWindow::on_buttonVanilla_clicked()
 void MainWindow::addBodyToWorld(){
     // Create the rectangle in graphics view
     QGraphicsRectItem* rect = new QGraphicsRectItem(0,0,100,100);
-    rect->setFlag(QGraphicsItem::ItemIsMovable, true);
     rect->setPen(Qt::NoPen);
     rect->setBrush(model->bodyTexture);
-    graphicsRects.push_back(rect);
     ui->addIngredientsGraphicsView->scene()->addItem(rect);
+    graphicsRects.push_back(rect);
 
     //Add box into the world
     b2Body* body = model->world.CreateBody(&model->bodyDef); // Add body to world
     body->CreateFixture(&model->fixtureDef); // Add fixture to body
     model->bodies.push_back(body);
 }
+
+void MainWindow::addBodyToEndScreen(){
+    // Create the rectangle in graphics view
+    QGraphicsRectItem* rect = new QGraphicsRectItem(0,0, 100/8, 100/8);
+    rect->setPen(Qt::NoPen);
+    rect->setBrush(model->colors[std::rand()%6]);
+    ui->endScreenGraphicsView->scene()->addItem(rect);
+    graphicsRects.push_back(rect);
+
+    // Recenter spawn point
+    model->bodyDef.position.Set(0,0);
+
+    // Resize boxes
+    model->dynamicBox.SetAsBox(1.0f/8, 1.0f/8);
+
+    //Add box into the world
+    b2Body* body = model->world.CreateBody(&model->bodyDef); // Add body to world
+
+    body->ApplyLinearImpulse( b2Vec2((std::rand()%15)-7,25), body->GetWorldCenter(), true );
+    body->CreateFixture(&model->fixtureDef); // Add fixture to body
+    model->bodies.push_back(body);
+}
+
+// Temporary. Used to test.
+void MainWindow::on_pushButton_clicked()
+{
+    if (!model->cleanedWorld){
+        // Clear bodies in world.
+        for(auto body : model->bodies)
+        {
+            // Currenct body is the world ground, do not remove it.
+            if(body->GetType() == b2_staticBody){
+                continue;
+            }
+            model->world.DestroyBody(body);
+        }
+        //model->bodies.clear();
+        model->cleanedWorld = true;
+    }
+
+    for(int i=0; i<250; ++i){
+        addBodyToEndScreen();
+    }
+}
+
+void MainWindow::on_change_to_End_Screen(){
+    if (!model->cleanedWorld){
+        // Clear bodies in world.
+        for(auto body : model->bodies)
+        {
+            // Currenct body is the world ground, do not remove it.
+            if(body->GetType() == b2_staticBody){
+                continue;
+            }
+            model->world.DestroyBody(body);
+        }
+        //model->bodies.clear();
+        model->cleanedWorld = true;
+    }
+
+    for(int i=0; i<250; ++i){
+        addBodyToEndScreen();
+    }
+}
+
