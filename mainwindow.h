@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QGraphicsRectItem>
+#include <QGraphicsOpacityEffect>
+#include <QPropertyAnimation>
+#include <QTimer>
 #include "model.h"
 
 QT_BEGIN_NAMESPACE
@@ -37,6 +40,7 @@ private slots:
     void on_buttonVanilla_clicked();
 
     void on_exitGameButton_clicked();
+    void on_chillMixtureButton_clicked();
 
 private:
     Ui::MainWindow *ui;

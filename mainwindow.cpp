@@ -49,6 +49,8 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(&model, &Model::sendIngredientClicked, this, &MainWindow::updateIngredientButtonClicked);
 
     initializeImages();
+
+    ui->blackScreenWidget->setVisible(false);
 }
 
 MainWindow::~MainWindow()
@@ -183,5 +185,32 @@ void MainWindow::addBodyToWorld(){
     b2Body* body = model->world.CreateBody(&model->bodyDef); // Add body to world
     body->CreateFixture(&model->fixtureDef); // Add fixture to body
     model->bodies.push_back(body);
+}
+
+void MainWindow::on_chillMixtureButton_clicked()
+{
+    ui->blackScreenWidget->setVisible(true);
+    ui->chillMixtureButton->setEnabled(false);
+    ui->chillMixtureButton->setVisible(false);
+    ui->chillMixtureLabel->setVisible(false);
+
+    // Fade to Black
+    QGraphicsOpacityEffect *eff= new QGraphicsOpacityEffect(ui->blackScreenWidget);
+    ui->blackScreenWidget->setGraphicsEffect(eff);
+    QPropertyAnimation *animation = new QPropertyAnimation(eff, "opacity");
+    animation->setDuration(2000);
+    animation->setStartValue(0);
+    animation->setEndValue(1);
+
+    // Fade back in
+    connect(animation, &QPropertyAnimation::finished, [animation](){
+        if (animation->direction() == QAbstractAnimation::Forward) {
+            animation->setDirection(QAbstractAnimation::Backward);
+            QTimer::singleShot(1000, [animation]{ animation->start(); });
+        }
+    });
+
+    animation->start();
+
 }
 
