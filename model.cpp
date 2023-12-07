@@ -78,5 +78,10 @@ void Model::decrementScreen()
 
 void Model::getIngredientClicked(std::string ingredient)
 {
+    ingredientsAdded++;
+    if (ingredientsAdded == 5) {
+        qDebug() << "All ingredients added";
+        QTimer::singleShot(2000, this, &Model::incrementScreen);
+    }
     emit sendIngredientClicked(ingredient);
 }
