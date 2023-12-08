@@ -21,5 +21,6 @@
         <file>Sprites/addIngredientsBanner.png</file>
         <file>Sprites/fridge.png</file>
         <file>Sprites/fridgeOpen.png</file>
+        <file>Sprites/endScreen.png</file>
     </qresource>
 </RCC>
