@@ -19,5 +19,7 @@
         <file>Sprites/potOnStove2.png</file>
         <file>Sprites/kitchen.jpg</file>
         <file>Sprites/addIngredientsBanner.png</file>
+        <file>Sprites/fridge.png</file>
+        <file>Sprites/fridgeOpen.png</file>
     </qresource>
 </RCC>
