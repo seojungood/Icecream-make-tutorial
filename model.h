@@ -25,7 +25,7 @@ public:
 
     std::vector<QColor> colors =  {Qt::red,Qt::blue,Qt::yellow,Qt::green,Qt::magenta,Qt::cyan};
     bool cleanedWorld {false};
-    int screenIndex {0}; // Shoule be initialized to 0!!!
+    int screenIndex {0};
 
     int ingredientsAdded {0};
 
