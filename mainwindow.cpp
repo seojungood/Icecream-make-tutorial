@@ -9,6 +9,7 @@
 
 #include "churn.h"
 #include "model.h"
+#include "boil.h"
 
 MainWindow::MainWindow(Model& model, QWidget *parent)
     : QMainWindow(parent)
@@ -17,7 +18,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     ui->setupUi(this);
 
     this->model = &model;
-
 
 
     // Set the background for Ingredient Screen
@@ -39,6 +39,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     // Start Screen button connections
     connect(ui->startGameButton, &QPushButton::clicked, &model, &Model::incrementScreen);
+
+    // Connect to Boil screen
+    connect(ui->screen02Boil, &Boil::boilSucceeded, &model, &Model::incrementScreen); // Move from Boil to Freeze
 
     // Screen switching connections
     connect(ui->screen04Churn, &Churn::churningComplete, &model, &Model::incrementScreen); // Move from Churn to End Screen

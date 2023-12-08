@@ -56,6 +56,7 @@ SOURCES += \
     Box2D/Dynamics/b2World.cpp \
     Box2D/Dynamics/b2WorldCallbacks.cpp \
     Box2D/Rope/b2Rope.cpp \
+    boil.cpp \
     churn.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -109,11 +110,13 @@ HEADERS += \
     Box2D/Dynamics/b2World.h \
     Box2D/Dynamics/b2WorldCallbacks.h \
     Box2D/Rope/b2Rope.h \
+    boil.h \
     churn.h \
     mainwindow.h \
     model.h
 
 FORMS += \
+    boil.ui \
     churn.ui \
     mainwindow.ui
 
