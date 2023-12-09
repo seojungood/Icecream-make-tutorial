@@ -285,8 +285,6 @@ void MainWindow::on_chillMixtureButton_clicked()
     emit onChillingComplete();
 }
 
-
-
 void MainWindow::on_change_to_End_Screen(){
     if (!model->cleanedWorld){
         // Clear bodies in world.
@@ -298,7 +296,6 @@ void MainWindow::on_change_to_End_Screen(){
             }
             model->world.DestroyBody(body);
         }
-        //model->bodies.clear();
         model->cleanedWorld = true;
     }
 
@@ -310,4 +307,9 @@ void MainWindow::on_change_to_End_Screen(){
 void MainWindow::initializeChillScreen()
 {
     ui->labelRefrigerator->setPixmap(QPixmap(":/Resources/Sprites/fridgeOpen.png").scaled(512, 544));
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    MainWindow::close();
 }
