@@ -44,6 +44,7 @@ private:
     Ui::MainWindow *ui;
     void resetAddIngredientsScreen();
     void initializeAddIngredientsScreen();
+    void initializeChillScreen();
     void addBodyToWorld();
     void addBodyToEndScreen();
     Model* model;

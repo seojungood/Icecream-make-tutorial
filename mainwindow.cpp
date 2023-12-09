@@ -28,6 +28,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     ui->addIngredientsGraphicsView->setScene(scene);
     ui->addIngredientsGraphicsView->setEnabled(false);
 
+    // Set the background for the Chill Screen
+    ui->chillGraphicsView->setScene(scene);
+
     // Set the background for End Screen
     QGraphicsScene* scene2 = new QGraphicsScene(0,0,800,600, ui->endScreenGraphicsView);
     scene2->setBackgroundBrush(Qt::white);
@@ -57,6 +60,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(&model, &Model::resetAddIngredientsScreen, this, &MainWindow::resetAddIngredientsScreen);
 
     initializeAddIngredientsScreen();
+    initializeChillScreen();
 
     ui->blackScreenWidget->setVisible(false);
     connect(this, &MainWindow::onChillingComplete, &model, &Model::handleChillingComplete);
@@ -237,7 +241,8 @@ void MainWindow::on_chillMixtureButton_clicked()
     ui->blackScreenWidget->setVisible(true);
     ui->chillMixtureButton->setEnabled(false);
     ui->chillMixtureButton->setVisible(false);
-    ui->chillMixtureLabel->setVisible(false);
+    ui->labelChillHeader->setVisible(false);
+    ui->labelRefrigerator->setPixmap(QPixmap(":/Resources/Sprites/fridge.png").scaled(512, 544));
 
     // Fade to Black
     QGraphicsOpacityEffect *eff= new QGraphicsOpacityEffect(ui->blackScreenWidget);
@@ -321,4 +326,9 @@ void MainWindow::on_change_to_End_Screen(){
     for(int i=0; i<250; ++i){
         addBodyToEndScreen();
     }
+}
+
+void MainWindow::initializeChillScreen()
+{
+    ui->labelRefrigerator->setPixmap(QPixmap(":/Resources/Sprites/fridgeOpen.png").scaled(512, 544));
 }
