@@ -27,5 +27,8 @@
         <file>Sprites/CrankBanner.png</file>
         <file>Sprites/title.png</file>
         <file>Sprites/titleScreen.jpg</file>
+        <file>Sprites/startGameButton.png</file>
+        <file>Sprites/chillMixtureButton.png</file>
+        <file>Sprites/exitGameButton.png</file>
     </qresource>
 </RCC>

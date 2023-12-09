@@ -29,9 +29,18 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     // Set the background and Logo of Title Screen
     ui->titleScreenLabel->setPixmap(QPixmap(":/Resources/Sprites/titleScreen.jpg").scaled(800,600));
     ui->titleLabel->setPixmap(QPixmap(":/Resources/Sprites/title.png").scaled(520,264));
+    QPixmap startButtonPixmap = QPixmap(":/Resources/Sprites/startGameButton.png").scaled(128,64);
+    ui->startGameButton->setIcon(QIcon(startButtonPixmap));
+    ui->startGameButton->setIconSize(QSize(128,64));
+    QPixmap exitButtonPixmap = QPixmap(":/Resources/Sprites/exitGameButton.png").scaled(128,64);
+    ui->exitGameButton->setIcon(QIcon(exitButtonPixmap));
+    ui->exitGameButton->setIconSize(QSize(128,64));
 
     // Set the background for the Chill Screen
     ui->chillGraphicsView->setScene(scene);
+    QPixmap chillMixtureButtonPixmap = QPixmap(":/Resources/Sprites/chillMixtureButton.png").scaled(128,64);
+    ui->chillMixtureButton->setIcon(QIcon(chillMixtureButtonPixmap));
+    ui->chillMixtureButton->setIconSize(QSize(128,64));
 
     // Set the background for End Screen
     QGraphicsScene* scene2 = new QGraphicsScene(0,0,800,600, ui->endScreenGraphicsView);
