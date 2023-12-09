@@ -22,5 +22,8 @@
         <file>Sprites/fridge.png</file>
         <file>Sprites/fridgeOpen.png</file>
         <file>Sprites/endScreen.png</file>
+        <file>Sprites/BoilMixtureBanner.png</file>
+        <file>Sprites/ChillMixtureBanner.png</file>
+        <file>Sprites/CrankBanner.png</file>
     </qresource>
 </RCC>

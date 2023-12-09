@@ -169,6 +169,9 @@ void MainWindow::initializeAddIngredientsScreen()
     ui->labelIngredientList->setPixmap(QPixmap(":/Resources/Sprites/IngredientList"));
     ui->labelAddIngredientsPot->setPixmap(QPixmap(":/Resources/Sprites/pot.png"));
     ui->labelAddIngredients->setPixmap(QPixmap(":/Resources/Sprites/addIngredientsBanner.png"));
+    ui->labelBoilBanner->setPixmap(QPixmap(":/Resources/Sprites/BoilMixtureBanner.png"));
+    ui->labelChillHeader->setPixmap(QPixmap(":/Resources/Sprites/ChillMixtureBanner.png"));
+    ui->labelChurnBanner->setPixmap(QPixmap(":/Resources/Sprites/CrankBanner.png"));
 }
 
 

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="screen00Start">
      <property name="styleSheet">
@@ -107,9 +107,9 @@ background-color: rgb(90, 90, 90);</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>4</y>
         <width>440</width>
-        <height>56</height>
+        <height>44</height>
        </rect>
       </property>
       <property name="font">
@@ -331,13 +331,13 @@ background-color: rgb(90, 90, 90);</string>
      <zorder>strikethroughSalt</zorder>
     </widget>
     <widget class="Boil" name="screen02Boil">
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="labelBoilBanner">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>85</y>
-        <width>251</width>
-        <height>61</height>
+        <x>0</x>
+        <y>4</y>
+        <width>300</width>
+        <height>44</height>
        </rect>
       </property>
       <property name="text">
@@ -431,13 +431,13 @@ background-color: rgb(90, 90, 90);</string>
      <zorder>blackScreenWidget</zorder>
     </widget>
     <widget class="Churn" name="screen04Churn">
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="labelChurnBanner">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>145</y>
-        <width>141</width>
-        <height>71</height>
+        <x>0</x>
+        <y>4</y>
+        <width>600</width>
+        <height>44</height>
        </rect>
       </property>
       <property name="text">
