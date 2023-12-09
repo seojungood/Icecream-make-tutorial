@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="screen00Start">
      <property name="styleSheet">
@@ -242,7 +242,7 @@ background-color: rgb(90, 90, 90);</string>
       <property name="geometry">
        <rect>
         <x>5</x>
-        <y>50</y>
+        <y>44</y>
         <width>200</width>
         <height>200</height>
        </rect>
@@ -271,7 +271,7 @@ background-color: rgb(90, 90, 90);</string>
       <property name="geometry">
        <rect>
         <x>5</x>
-        <y>166</y>
+        <y>160</y>
         <width>200</width>
         <height>4</height>
        </rect>
@@ -284,7 +284,7 @@ background-color: rgb(90, 90, 90);</string>
       <property name="geometry">
        <rect>
         <x>5</x>
-        <y>102</y>
+        <y>96</y>
         <width>200</width>
         <height>4</height>
        </rect>
@@ -297,7 +297,7 @@ background-color: rgb(90, 90, 90);</string>
       <property name="geometry">
        <rect>
         <x>5</x>
-        <y>230</y>
+        <y>224</y>
         <width>200</width>
         <height>4</height>
        </rect>
@@ -310,7 +310,7 @@ background-color: rgb(90, 90, 90);</string>
       <property name="geometry">
        <rect>
         <x>5</x>
-        <y>134</y>
+        <y>128</y>
         <width>200</width>
         <height>4</height>
        </rect>
@@ -323,7 +323,7 @@ background-color: rgb(90, 90, 90);</string>
       <property name="geometry">
        <rect>
         <x>5</x>
-        <y>198</y>
+        <y>192</y>
         <width>200</width>
         <height>4</height>
        </rect>
@@ -353,7 +353,7 @@ background-color: rgb(90, 90, 90);</string>
        <rect>
         <x>0</x>
         <y>4</y>
-        <width>300</width>
+        <width>600</width>
         <height>44</height>
        </rect>
       </property>
@@ -382,10 +382,10 @@ background-color: rgb(90, 90, 90);</string>
      <widget class="QLabel" name="labelChillHeader">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>0</y>
-        <width>400</width>
-        <height>50</height>
+        <x>-72</x>
+        <y>4</y>
+        <width>600</width>
+        <height>44</height>
        </rect>
       </property>
       <property name="font">
