@@ -22,7 +22,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     // Set the background for Ingredient Screen
     QGraphicsScene* scene = new QGraphicsScene(0,0,800,600, ui->addIngredientsGraphicsView);
-    scene->setBackgroundBrush(Qt::white);
     QGraphicsPixmapItem* item = new QGraphicsPixmapItem(QPixmap(":/Resources/Sprites/kitchen.jpg"));
     scene->addItem(item);
     ui->addIngredientsGraphicsView->setScene(scene);
@@ -33,7 +32,8 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     // Set the background for End Screen
     QGraphicsScene* scene2 = new QGraphicsScene(0,0,800,600, ui->endScreenGraphicsView);
-    scene2->setBackgroundBrush(Qt::white);
+    QGraphicsPixmapItem* background = new QGraphicsPixmapItem(QPixmap(":/Resources/Sprites/endScreen.png").scaled(800,600));
+    scene2->addItem(background);
     ui->endScreenGraphicsView->setScene(scene2);
     ui->endScreenGraphicsView->setEnabled(false);
 
@@ -236,6 +236,28 @@ void MainWindow::addBodyToWorld(){
     model->bodies.push_back(body);
 }
 
+void MainWindow::addBodyToEndScreen(){
+    // Create the rectangle in graphics view
+    QGraphicsRectItem* rect = new QGraphicsRectItem(0,0, 100/5, 100/10);
+    rect->setPen(Qt::NoPen);
+    rect->setBrush(model->colors[std::rand()%6]);
+    ui->endScreenGraphicsView->scene()->addItem(rect);
+    graphicsRects.push_back(rect);
+
+    // Recenter spawn point
+    model->bodyDef.position.Set(1.2,0.0);
+
+    // Resize boxes
+    model->dynamicBox.SetAsBox(1.0f/5, 1.0f/10);
+
+    //Add box into the world
+    b2Body* body = model->world.CreateBody(&model->bodyDef); // Add body to world
+
+    body->ApplyLinearImpulse( b2Vec2((std::rand()%15)-7,25), body->GetWorldCenter(), true );
+    body->CreateFixture(&model->fixtureDef); // Add fixture to body
+    model->bodies.push_back(body);
+}
+
 void MainWindow::on_chillMixtureButton_clicked()
 {
     ui->blackScreenWidget->setVisible(true);
@@ -264,49 +286,7 @@ void MainWindow::on_chillMixtureButton_clicked()
     emit onChillingComplete();
 }
 
-void MainWindow::addBodyToEndScreen(){
-    // Create the rectangle in graphics view
-    QGraphicsRectItem* rect = new QGraphicsRectItem(0,0, 100/8, 100/8);
-    rect->setPen(Qt::NoPen);
-    rect->setBrush(model->colors[std::rand()%6]);
-    ui->endScreenGraphicsView->scene()->addItem(rect);
-    graphicsRects.push_back(rect);
 
-    // Recenter spawn point
-    model->bodyDef.position.Set(0,0);
-
-    // Resize boxes
-    model->dynamicBox.SetAsBox(1.0f/8, 1.0f/8);
-
-    //Add box into the world
-    b2Body* body = model->world.CreateBody(&model->bodyDef); // Add body to world
-
-    body->ApplyLinearImpulse( b2Vec2((std::rand()%15)-7,25), body->GetWorldCenter(), true );
-    body->CreateFixture(&model->fixtureDef); // Add fixture to body
-    model->bodies.push_back(body);
-}
-
-// Temporary. Used to test.
-void MainWindow::on_pushButton_clicked()
-{
-    if (!model->cleanedWorld){
-        // Clear bodies in world.
-        for(auto body : model->bodies)
-        {
-            // Currenct body is the world ground, do not remove it.
-            if(body->GetType() == b2_staticBody){
-                continue;
-            }
-            model->world.DestroyBody(body);
-        }
-        //model->bodies.clear();
-        model->cleanedWorld = true;
-    }
-
-    for(int i=0; i<250; ++i){
-        addBodyToEndScreen();
-    }
-}
 
 void MainWindow::on_change_to_End_Screen(){
     if (!model->cleanedWorld){

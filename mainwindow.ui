@@ -444,32 +444,6 @@ background-color: rgb(90, 90, 90);</string>
        </rect>
       </property>
      </widget>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>60</y>
-        <width>261</width>
-        <height>311</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Congratulations!!!</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton">
-      <property name="geometry">
-       <rect>
-        <x>350</x>
-        <y>440</y>
-        <width>80</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Confetti</string>
-      </property>
-     </widget>
     </widget>
    </widget>
    <widget class="QPushButton" name="buttonPrevious">
