@@ -25,7 +25,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     QGraphicsPixmapItem* item = new QGraphicsPixmapItem(QPixmap(":/Resources/Sprites/kitchen.jpg"));
     scene->addItem(item);
     ui->addIngredientsGraphicsView->setScene(scene);
-    ui->addIngredientsGraphicsView->setEnabled(false);
 
     // Set the background for the Chill Screen
     ui->chillGraphicsView->setScene(scene);
