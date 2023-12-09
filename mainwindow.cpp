@@ -22,7 +22,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     // Set the background for Ingredient Screen
     QGraphicsScene* scene = new QGraphicsScene(0,0,800,600, ui->addIngredientsGraphicsView);
-    QGraphicsPixmapItem* item = new QGraphicsPixmapItem(QPixmap(":/Resources/Sprites/kitchen.jpg"));
+    QGraphicsPixmapItem* item = new QGraphicsPixmapItem(QPixmap(":/Resources/Sprites/kitchen.jpg").scaled(800,600));
     scene->addItem(item);
     ui->addIngredientsGraphicsView->setScene(scene);
 
