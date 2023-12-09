@@ -1,10 +1,11 @@
 #include "model.h"
-#include <QTimer>
 #include <QDebug>
+#include <QTimer>
 
 Model::Model(QObject *parent)
-    : QObject{parent}, world(b2Vec2(0.0f, -10.0f))
-{    
+    : QObject{parent}
+    , world(b2Vec2(0.0f, -10.0f))
+{
     // Define the ground body.
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(0.0f, -20.0f);
@@ -12,7 +13,7 @@ Model::Model(QObject *parent)
     // Call the body factory which allocates memory for the ground body
     // from a pool and creates the ground box shape (also from a pool).
     // The body is also added to the world.
-    b2Body* groundBody = world.CreateBody(&groundBodyDef);
+    b2Body *groundBody = world.CreateBody(&groundBodyDef);
 
     // Define the ground box shape.
     b2PolygonShape groundBox;
@@ -40,10 +41,11 @@ Model::Model(QObject *parent)
     // Start Simulation
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Model::updateWorldSlot);
-    timer->start(1000/60);
+    timer->start(1000 / 60);
 }
 
-void Model::updateWorldSlot(){
+void Model::updateWorldSlot()
+{
     // Instruct the world to perform a single step of simulation.
     world.Step(timeStep, velocityIterations, positionIterations);
 
@@ -84,5 +86,6 @@ void Model::getIngredientClicked(std::string ingredient)
 
 void Model::handleChillingComplete()
 {
-    QTimer::singleShot(7000, this, &Model::incrementScreen);
+    QTimer::singleShot(5000, this, &Model::openFridgeSignal);
+    QTimer::singleShot(6000, this, &Model::incrementScreen);
 }

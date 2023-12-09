@@ -1,11 +1,11 @@
 #ifndef CHURN_H
 #define CHURN_H
 
-#include <QWidget>
+#include <QLine>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QPen>
-#include <QLine>
+#include <QWidget>
 
 namespace Ui {
 class Churn;

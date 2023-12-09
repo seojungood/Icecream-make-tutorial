@@ -1,17 +1,18 @@
 #ifndef BOIL_H
 #define BOIL_H
 
-#include <QWidget>
+#include <QImage>
 #include <QPainter>
 #include <QPushButton>
 #include <QTimer>
-#include <QImage>
+#include <QWidget>
 
 namespace Ui {
 class Boil;
 }
 
-class Boil : public QWidget {
+class Boil : public QWidget
+{
     Q_OBJECT
 public:
     explicit Boil(QWidget *parent = nullptr);
@@ -38,7 +39,6 @@ private:
     int boilingPosition;
     int margin;
     int barWidth;
-
 };
 
 #endif // BOIL_H

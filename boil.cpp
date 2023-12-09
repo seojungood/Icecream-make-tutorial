@@ -1,29 +1,37 @@
 #include "boil.h"
 #include "ui_boil.h"
 
-Boil::Boil(QWidget *parent) : QWidget(parent), isBoiling(false), boilingPosition(0),
-    ui(new Ui::Boil),kitchenImage(":/Resources/Sprites/kitchen.jpg"), imageToDraw(":/Resources/Sprites/potOnStove1.png"){
+Boil::Boil(QWidget *parent)
+    : QWidget(parent)
+    , isBoiling(false)
+    , boilingPosition(0)
+    , ui(new Ui::Boil)
+    , kitchenImage(":/Resources/Sprites/kitchen.jpg")
+    , imageToDraw(":/Resources/Sprites/potOnStove1.png")
+{
     ui->setupUi(this);
 
     boilButton = new QPushButton("Heat", this);
     boilButton->setGeometry(650, 485, 100, 50);
-    boilButton->setStyleSheet("background-color: #ff0000; color: #ffffff; border: none; border-radius: 10px;");
+    boilButton->setStyleSheet(
+        "background-color: #ff0000; color: #ffffff; border: none; border-radius: 10px;");
 
     connect(boilButton, &QPushButton::clicked, this, &Boil::onBoilButtonClicked);
 
     timer = new QTimer(this);
     timer->setInterval(10);
     connect(timer, &QTimer::timeout, this, &Boil::updateBoilingBar);
-
 }
 
-Boil::~Boil() {
+Boil::~Boil()
+{
     delete boilButton;
     delete timer;
     delete ui;
 }
 
-void Boil::paintEvent(QPaintEvent *) {
+void Boil::paintEvent(QPaintEvent *)
+{
     QPainter painter(this);
 
     painter.drawImage(QRect(0, 0, width(), height()), kitchenImage);
@@ -43,22 +51,21 @@ void Boil::paintEvent(QPaintEvent *) {
 
     // Draw the boiling bar with margin
     if (isBoiling) {
-
         boilingPosition = (boilingPosition + 1) % (barWidth - 15);
         painter.fillRect(margin + boilingPosition - 5, 500, 20, 20, Qt::black);
-
     }
 }
-void Boil::onBoilButtonClicked() {
+void Boil::onBoilButtonClicked()
+{
     if (!isBoiling) {
         isBoiling = true;
         timer->start(10); // Update bar every 10 milliseconds
-    }
-    else{
+    } else {
         // Check if the boiling bar reaches the green section
-        if (boilingPosition + 200 >= margin + 0.6 * barWidth && boilingPosition + 200 <= margin + 0.9 * barWidth) {
+        if (boilingPosition + 200 >= margin + 0.6 * barWidth
+            && boilingPosition + 200 <= margin + 0.9 * barWidth) {
             isBoiling = false;
-            imageToDraw =  QImage(":/Resources/Sprites/potOnStove2.png");
+            imageToDraw = QImage(":/Resources/Sprites/potOnStove2.png");
             repaint();
             QTimer::singleShot(2000, this, &Boil::boilGameClear);
             QTimer::singleShot(2000, this, &Boil::resetBoil);
@@ -66,7 +73,8 @@ void Boil::onBoilButtonClicked() {
     }
 }
 
-void Boil::updateBoilingBar() {
+void Boil::updateBoilingBar()
+{
     if (isBoiling) {
         boilingPosition++;
         if (boilingPosition >= barWidth + margin) {
@@ -77,12 +85,14 @@ void Boil::updateBoilingBar() {
 }
 
 // Moves onto next screen
-void Boil::boilGameClear() {
+void Boil::boilGameClear()
+{
     emit boilSucceeded();
 }
 
-void Boil::resetBoil() {
-    imageToDraw =  QImage(":/Resources/Sprites/potOnStove1.png");
+void Boil::resetBoil()
+{
+    imageToDraw = QImage(":/Resources/Sprites/potOnStove1.png");
     margin = 200;
     barWidth = width() - 2 * margin;
 }

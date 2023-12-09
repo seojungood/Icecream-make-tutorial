@@ -1,19 +1,18 @@
 #include "churn.h"
 #include "ui_churn.h"
 
-Churn::Churn(QWidget *parent) :
-    QWidget(parent),
-    kitchenImage(":/Resources/Sprites/kitchen.jpg"),
-    ui(new Ui::Churn)
+Churn::Churn(QWidget *parent)
+    : QWidget(parent)
+    , kitchenImage(":/Resources/Sprites/kitchen.jpg")
+    , ui(new Ui::Churn)
 {
     ui->setupUi(this);
 
-    QFont font( "Arial", 20, QFont::Bold);
+    QFont font("Arial", 20, QFont::Bold);
     ui->rotationsLabel->setFont(font);
 
     ui->handle->setPixmap(QPixmap(":/Resources/Sprites/handle.png"));
     handleOffset = float(ui->handle->width()) / 2.0f;
-
 }
 
 Churn::~Churn()
@@ -23,16 +22,23 @@ Churn::~Churn()
 
 void Churn::mouseMoveEvent(QMouseEvent *eventMove)
 {
-    float distanceFromCenter = calculateDistance(400.0f, 300.0f, float(eventMove->position().x()), float(eventMove->position().y()));
-    float distanceFromHandle = calculateDistance(ui->handle->x() + handleOffset, ui->handle->y() + handleOffset, float(eventMove->position().x()), float(eventMove->position().y()));
-    if ((distanceFromCenter < 170) && (distanceFromCenter > 110) && (distanceFromHandle < 50))
-    {
-        ui->handle->move(eventMove->position().x() - handleOffset, eventMove->position().y() - handleOffset);
+    float distanceFromCenter = calculateDistance(400.0f,
+                                                 300.0f,
+                                                 float(eventMove->position().x()),
+                                                 float(eventMove->position().y()));
+    float distanceFromHandle = calculateDistance(ui->handle->x() + handleOffset,
+                                                 ui->handle->y() + handleOffset,
+                                                 float(eventMove->position().x()),
+                                                 float(eventMove->position().y()));
+    if ((distanceFromCenter < 170) && (distanceFromCenter > 110) && (distanceFromHandle < 50)) {
+        ui->handle->move(eventMove->position().x() - handleOffset,
+                         eventMove->position().y() - handleOffset);
         update();
     }
 
-    if ((calculateDistance(ui->handle->x() + handleOffset, ui->handle->y() + handleOffset, 400, 165) < 40) && (touchedBottom))
-    {
+    if ((calculateDistance(ui->handle->x() + handleOffset, ui->handle->y() + handleOffset, 400, 165)
+         < 40)
+        && (touchedBottom)) {
         rotations += 1;
         ui->rotationsLabel->setText(QString::number(rotations));
         touchedBottom = false;
@@ -43,8 +49,8 @@ void Churn::mouseMoveEvent(QMouseEvent *eventMove)
         }
     }
 
-    if (calculateDistance(ui->handle->x() + handleOffset, ui->handle->y() + handleOffset, 400, 435) < 40)
-    {
+    if (calculateDistance(ui->handle->x() + handleOffset, ui->handle->y() + handleOffset, 400, 435)
+        < 40) {
         touchedBottom = true;
     }
 }
@@ -64,7 +70,7 @@ void Churn::paintEvent(QPaintEvent *event)
     painter.drawImage(QRect(0, 0, width(), height()), kitchenImage);
     painter.drawImage(QRect(225, 245, 350, 350), QImage(":/Resources/Sprites/churner.png"));
     painter.drawImage(QRect(250, 150, 300, 300), QImage(":/Resources/Sprites/churnRing.png"));
-//    painter.drawImage(QRect(280, 180, 240, 240), QImage(":/Resources/Sprites/whiteCircle.png"));
+    //    painter.drawImage(QRect(280, 180, 240, 240), QImage(":/Resources/Sprites/whiteCircle.png"));
 
     painter.setPen(QPen(Qt::gray, 16));
     painter.drawLine(400, 300, ui->handle->x() + handleOffset, ui->handle->y() + handleOffset);

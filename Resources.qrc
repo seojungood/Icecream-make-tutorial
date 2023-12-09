@@ -30,5 +30,8 @@
         <file>Sprites/startGameButton.png</file>
         <file>Sprites/chillMixtureButton.png</file>
         <file>Sprites/exitGameButton.png</file>
+        <file>Sprites/chillMixtureHover.png</file>
+        <file>Sprites/exitGameHover.png</file>
+        <file>Sprites/startGameHover.png</file>
     </qresource>
 </RCC>
