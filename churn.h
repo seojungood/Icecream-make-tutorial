@@ -23,6 +23,7 @@ private:
     int rotations = 0;
     bool touchedBottom = false;
     float handleOffset = 0;
+    QImage kitchenImage;
 
     Ui::Churn *ui;
     void mouseMoveEvent(QMouseEvent *eventMove);
