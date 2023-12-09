@@ -3,6 +3,7 @@
 
 Churn::Churn(QWidget *parent) :
     QWidget(parent),
+    kitchenImage(":/Resources/Sprites/kitchen.jpg"),
     ui(new Ui::Churn)
 {
     ui->setupUi(this);
@@ -60,6 +61,7 @@ void Churn::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
 
+    painter.drawImage(QRect(0, 0, width(), height()), kitchenImage);
     painter.drawImage(QRect(225, 245, 350, 350), QImage(":/Resources/Sprites/churner.png"));
     painter.drawImage(QRect(250, 150, 300, 300), QImage(":/Resources/Sprites/churnRing.png"));
 //    painter.drawImage(QRect(280, 180, 240, 240), QImage(":/Resources/Sprites/whiteCircle.png"));

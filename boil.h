@@ -31,6 +31,7 @@ private:
     QTimer *timer;
     Ui::Boil *ui;
     QImage imageToDraw;
+    QImage kitchenImage;
 
     void paintEvent(QPaintEvent *event);
     bool isBoiling;

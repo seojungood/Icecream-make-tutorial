@@ -255,7 +255,7 @@ void MainWindow::addBodyToEndScreen(){
     //Add box into the world
     b2Body* body = model->world.CreateBody(&model->bodyDef); // Add body to world
 
-    body->ApplyLinearImpulse( b2Vec2((std::rand()%15)-7,25), body->GetWorldCenter(), true );
+    body->ApplyLinearImpulse( b2Vec2((std::rand()%20)-8.5,25), body->GetWorldCenter(), true );
     body->CreateFixture(&model->fixtureDef); // Add fixture to body
     model->bodies.push_back(body);
 }
@@ -288,8 +288,6 @@ void MainWindow::on_chillMixtureButton_clicked()
     emit onChillingComplete();
 }
 
-
-
 void MainWindow::on_change_to_End_Screen(){
     if (!model->cleanedWorld){
         // Clear bodies in world.
@@ -301,7 +299,6 @@ void MainWindow::on_change_to_End_Screen(){
             }
             model->world.DestroyBody(body);
         }
-        //model->bodies.clear();
         model->cleanedWorld = true;
     }
 
@@ -313,4 +310,9 @@ void MainWindow::on_change_to_End_Screen(){
 void MainWindow::initializeChillScreen()
 {
     ui->labelRefrigerator->setPixmap(QPixmap(":/Resources/Sprites/fridgeOpen.png").scaled(512, 544));
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    MainWindow::close();
 }
