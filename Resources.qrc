@@ -25,5 +25,7 @@
         <file>Sprites/BoilMixtureBanner.png</file>
         <file>Sprites/ChillMixtureBanner.png</file>
         <file>Sprites/CrankBanner.png</file>
+        <file>Sprites/title.png</file>
+        <file>Sprites/titleScreen.jpg</file>
     </qresource>
 </RCC>

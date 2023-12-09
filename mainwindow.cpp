@@ -26,6 +26,10 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     scene->addItem(item);
     ui->addIngredientsGraphicsView->setScene(scene);
 
+    // Set the background and Logo of Title Screen
+    ui->titleScreenLabel->setPixmap(QPixmap(":/Resources/Sprites/titleScreen.jpg").scaled(800,600));
+    ui->titleLabel->setPixmap(QPixmap(":/Resources/Sprites/title.png").scaled(520,264));
+
     // Set the background for the Chill Screen
     ui->chillGraphicsView->setScene(scene);
 
@@ -48,9 +52,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     // Screen switching connections
     connect(ui->screen04Churn, &Churn::churningComplete, &model, &Model::incrementScreen); // Move from Churn to End Screen
     connect(ui->screen04Churn, &Churn::churningComplete, this, &MainWindow::on_change_to_End_Screen); // Shoot confetti
-
-    connect(ui->buttonNext, &QPushButton::clicked, &model, &Model::incrementScreen);
-    connect(ui->buttonPrevious, &QPushButton::clicked, &model, &Model::decrementScreen);
     connect(&model, &Model::setScreenToSwitch, ui->gameScreens, &QStackedWidget::setCurrentIndex);
 
     // Add Ingredients connections
@@ -58,6 +59,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(&model, &Model::sendIngredientClicked, this, &MainWindow::updateIngredientButtonClicked);
     connect(&model, &Model::resetAddIngredientsScreen, this, &MainWindow::resetAddIngredientsScreen);
 
+    // Initialize assets for Ingredients and Chill screens
     initializeAddIngredientsScreen();
     initializeChillScreen();
 
