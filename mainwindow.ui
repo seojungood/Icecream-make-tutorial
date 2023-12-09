@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="screen00Start">
      <property name="styleSheet">
@@ -341,7 +341,7 @@ background-color: rgb(90, 90, 90);</string>
        </rect>
       </property>
       <property name="text">
-       <string>2. Boil Mixture!</string>
+       <string/>
       </property>
      </widget>
     </widget>
@@ -510,7 +510,7 @@ background-color: rgb(90, 90, 90);</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

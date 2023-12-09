@@ -2,11 +2,12 @@
 #include "ui_boil.h"
 
 Boil::Boil(QWidget *parent) : QWidget(parent), isBoiling(false), boilingPosition(0),
-    ui(new Ui::Boil), imageToDraw(":/Resources/Sprites/potOnStove1.png"){
+    ui(new Ui::Boil),kitchenImage(":/Resources/Sprites/kitchen.jpg"), imageToDraw(":/Resources/Sprites/potOnStove1.png"){
     ui->setupUi(this);
 
-    boilButton = new QPushButton("Boil", this);
+    boilButton = new QPushButton("Heat", this);
     boilButton->setGeometry(650, 485, 100, 50);
+    boilButton->setStyleSheet("background-color: #ff0000; color: #ffffff; border: none; border-radius: 10px;");
 
     connect(boilButton, &QPushButton::clicked, this, &Boil::onBoilButtonClicked);
 
@@ -25,7 +26,7 @@ Boil::~Boil() {
 void Boil::paintEvent(QPaintEvent *) {
     QPainter painter(this);
 
-    painter.drawImage(QRect(0, 0, width(), height()), QImage(":/Resources/Sprites/kitchen.jpg"));
+    painter.drawImage(QRect(0, 0, width(), height()), kitchenImage);
 
     // Margin on both sides
     margin = 200;
@@ -44,7 +45,7 @@ void Boil::paintEvent(QPaintEvent *) {
     if (isBoiling) {
 
         boilingPosition = (boilingPosition + 1) % (barWidth - 15);
-        painter.fillRect(margin + boilingPosition - 5, 500, 30, 20, Qt::black);
+        painter.fillRect(margin + boilingPosition - 5, 500, 20, 20, Qt::black);
 
     }
 }
