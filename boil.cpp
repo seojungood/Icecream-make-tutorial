@@ -25,6 +25,8 @@ Boil::~Boil() {
 void Boil::paintEvent(QPaintEvent *) {
     QPainter painter(this);
 
+    painter.drawImage(QRect(0, 0, width(), height()), QImage(":/Resources/Sprites/kitchen.jpg"));
+
     // Margin on both sides
     margin = 200;
 
