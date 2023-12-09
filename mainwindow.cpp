@@ -252,7 +252,7 @@ void MainWindow::addBodyToEndScreen(){
     //Add box into the world
     b2Body* body = model->world.CreateBody(&model->bodyDef); // Add body to world
 
-    body->ApplyLinearImpulse( b2Vec2((std::rand()%15)-7,25), body->GetWorldCenter(), true );
+    body->ApplyLinearImpulse( b2Vec2((std::rand()%20)-8.5,25), body->GetWorldCenter(), true );
     body->CreateFixture(&model->fixtureDef); // Add fixture to body
     model->bodies.push_back(body);
 }
