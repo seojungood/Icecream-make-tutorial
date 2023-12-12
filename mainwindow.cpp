@@ -18,7 +18,6 @@ MainWindow::MainWindow(Model &model, QWidget *parent)
     ui->setupUi(this);
 
     this->model = &model;
-
     // Set the background for Ingredient Screen
     QGraphicsScene *scene = new QGraphicsScene(0, 0, 800, 600, ui->addIngredientsGraphicsView);
     QGraphicsPixmapItem *item = new QGraphicsPixmapItem(
@@ -29,19 +28,18 @@ MainWindow::MainWindow(Model &model, QWidget *parent)
     // Set the background and Logo of Title Screen
     ui->titleScreenLabel->setPixmap(QPixmap(":/Resources/Sprites/titleScreen.jpg").scaled(800, 600));
     ui->titleLabel->setPixmap(QPixmap(":/Resources/Sprites/title.png").scaled(520, 264));
-    QPixmap startButtonPixmap = QPixmap(":/Resources/Sprites/startGameButton.png").scaled(128, 64);
-    ui->startGameButton->setIcon(QIcon(startButtonPixmap));
-    ui->startGameButton->setIconSize(QSize(128, 64));
-    QPixmap exitButtonPixmap = QPixmap(":/Resources/Sprites/exitGameButton.png").scaled(128, 64);
-    ui->exitGameButton->setIcon(QIcon(exitButtonPixmap));
-    ui->exitGameButton->setIconSize(QSize(128, 64));
+    // Hover & Unhover effect for Start Button
+    ui->startGameButton->setStyleSheet("QPushButton {border-image: url(:/Resources/Sprites/startGameButton.png); } "
+                                       "QPushButton:hover { border-image: url(:/Resources/Sprites/startGameHover.png); }");
+    // Hover & Unhover effect for Exit Button
+    ui->exitGameButton->setStyleSheet("QPushButton {border-image: url(:/Resources/Sprites/exitGameButton.png); } "
+                                      "QPushButton:hover { border-image: url(:/Resources/Sprites/exitGameHover.png); }");
 
     // Set the background for the Chill Screen
     ui->chillGraphicsView->setScene(scene);
-    QPixmap chillMixtureButtonPixmap = QPixmap(":/Resources/Sprites/chillMixtureButton.png")
-                                           .scaled(128, 64);
-    ui->chillMixtureButton->setIcon(QIcon(chillMixtureButtonPixmap));
-    ui->chillMixtureButton->setIconSize(QSize(128, 64));
+    // Hover & Unhover effect for Chill Mixture Button
+    ui->chillMixtureButton->setStyleSheet("QPushButton {border-image: url(:/Resources/Sprites/chillMixtureButton.png); } "
+                                          "QPushButton:hover { border-image: url(:/Resources/Sprites/chillMixtureHover.png); }");
 
     // Set the background for End Screen
     QGraphicsScene *scene2 = new QGraphicsScene(0, 0, 800, 600, ui->endScreenGraphicsView);
@@ -50,6 +48,10 @@ MainWindow::MainWindow(Model &model, QWidget *parent)
     scene2->addItem(background);
     ui->endScreenGraphicsView->setScene(scene2);
     ui->endScreenGraphicsView->setEnabled(false);
+
+    // Hover & Unhover effect for Serve Screen Exit button
+    ui->serveExitButton->setStyleSheet("QPushButton {border-image: url(:/Resources/Sprites/exitGameButton.png); } "
+                                      "QPushButton:hover { border-image: url(:/Resources/Sprites/exitGameHover.png); }");
 
     // Connection to world simulation
     connect(&model, &Model::sendBodiesList, this, &MainWindow::updateRects);

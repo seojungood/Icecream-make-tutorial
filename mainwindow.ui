@@ -380,7 +380,7 @@
      <widget class="QLabel" name="labelChillHeader">
       <property name="geometry">
        <rect>
-        <x>-72</x>
+        <x>-60</x>
         <y>4</y>
         <width>600</width>
         <height>44</height>
@@ -480,17 +480,17 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="serveExitButton">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>40</y>
-        <width>80</width>
-        <height>24</height>
+        <x>665</x>
+        <y>0</y>
+        <width>128</width>
+        <height>64</height>
        </rect>
       </property>
       <property name="text">
-       <string>Exit Game</string>
+       <string/>
       </property>
      </widget>
     </widget>

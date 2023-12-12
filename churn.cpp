@@ -43,7 +43,7 @@ void Churn::mouseMoveEvent(QMouseEvent *eventMove)
         ui->rotationsLabel->setText(QString::number(rotations));
         touchedBottom = false;
 
-        if (rotations >= 1) // Should be at least 5!!!
+        if (rotations >= 5)
         {
             emit churningComplete();
         }
